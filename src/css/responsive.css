@@ -1,0 +1,19 @@
+@media screen and (max-width: 992px) {
+    .web-leads-images{
+        display: none!important;
+    }
+    .mob-leads-images{
+        display: block!important;
+    }
+  }
+
+ 
+  @media screen and (min-width: 992px) {
+    .mob-leads-images{
+        display: none!important;
+    }
+
+    .web-leads-images{
+        display: block!important;
+    }
+  }

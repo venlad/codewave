@@ -1,0 +1,33 @@
+.homeMainHead{
+    font-size: 8em;font-weight:600;color:#2b2b2b
+}
+.homeSubHead{
+    font-weight:600;color:#EC3C63;
+}
+.homeMainHead1{
+    opacity: 0.9;margin-top:50px;
+}
+.homeGlobal{
+    width: 35%;margin-top:-80px;margin-left:-80px;
+}
+.homeOnlineAdaptive{
+    font-size: 32px;background:#000;color:white;padding-left:10px; padding-right:10px;
+}
+.homeEdtech{
+    font-size: 32px;background:#000;color:white;padding-left:10px; padding-right:10px;
+}
+.homeSlideBg{
+    background-image:url(https://res.cloudinary.com/codewave-technologies/image/upload/w_495/v1579365385/codewave-signature-process_ubnbsp.jpg);    background-size: contain !important;
+}
+.noCursor{
+    cursor: none;
+}
+.ppscrolllable{
+    overflow: hidden; outline: none;
+}
+.ppscrollablethumb{
+    width: 1280px; transform: translate3d(0px, 0px, 0px);
+}
+.scrollableThumbY{
+    height: 139.901px; transform: translate3d(0px, 0px, 0px);
+}

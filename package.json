@@ -1,0 +1,33 @@
+{
+  "name": "codewave-gatsby-strapi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Codewave-gatsby-strapi",
+  "author": "niketdewangan",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@cyriacbr/react-split-text": "^1.0.0",
+    "aos": "^2.3.4",
+    "bootstrap": "^5.0.2",
+    "gatsby": "^4.1.6",
+    "gatsby-plugin-image": "^2.2.0",
+    "gatsby-plugin-sharp": "^4.2.0",
+    "gatsby-source-filesystem": "^4.2.0",
+    "gatsby-transformer-sharp": "^4.2.0",
+    "react": "^17.0.1",
+    "react-animated-cursor": "^2.2.0",
+    "react-bootstrap-v5": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.3"
+  }
+}
