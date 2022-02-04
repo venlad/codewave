@@ -5,5 +5,6 @@ import "./src/css/homePage.css"
 import "./src/css/main-pages.css"
 import "./src/css/servies-landing.css"
 import "aos/dist/aos.css"
-import "./src/css/styles.css"
+
 import "./src/css/responsive.css"
+import "./src/css/styles.css"

@@ -8293,3 +8293,8 @@ body #app .app-container {
   max-width: 650px;
   max-height: 500px;
 }
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

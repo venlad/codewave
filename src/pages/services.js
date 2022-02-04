@@ -19,7 +19,7 @@ const Service = ({ data }) => {
     <>
       <div id="app">
         <div className="app-container" data-namespace="about">
-          <div className="content-wrapper scrollable" data-scrollbar>
+          <div className="content-wrapper scrollable">
             <div className="main">
               <div className="logo--mobile ">
                 <a href="/" data-section="0" className=" is-current ">
