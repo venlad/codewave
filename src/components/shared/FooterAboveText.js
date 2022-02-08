@@ -159,6 +159,22 @@ const FooterAboveText = ({ arabic, customData }) => {
           </div>
         </div>
       </div>
+      <div className="footer">
+        <div className="container-fluid">
+          <div className="row justify-content-center no-gutters">
+            <div className="col-sm-4 col-md-4 col-lg-3">
+              <div className="txt--p6">© 2020 Codewave Technologies. </div>
+            </div>
+            <div className="col-sm-6 col-md-6 col-lg-5">
+              <div className="txt--p6">
+                <a href="/privacy-policy">Privacy Policy</a> ·{" "}
+                <a href="/cookie-policy">Cookie Policy</a> ·{" "}
+                <a href="./terms-and-conditions">Terms and conditions</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

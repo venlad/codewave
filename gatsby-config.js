@@ -45,6 +45,22 @@ module.exports = {
             name: `shared`,
             endpoint: `api/shared?populate=*`,
           },
+          {
+            name: `leadership`,
+            endpoint: `api/leadership?populate=*`,
+          },
+          {
+            name: `growing-leader`,
+            endpoint: `api/growing-leader?populate=*`,
+          },
+          {
+            name: `about`,
+            endpoint: `api/about?populate=*`,
+          },
+          {
+            name: `contact`,
+            endpoint: `api/contact?populate=*`,
+          },
         ],
       },
     },
