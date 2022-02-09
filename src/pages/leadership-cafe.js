@@ -1,6 +1,7 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
+import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 
 const Leadership = ({ data }) => {
@@ -23,68 +24,7 @@ const Leadership = ({ data }) => {
                   />
                 </a>
               </div>
-              <div className="about__top pattern-leadership-cafe">
-                <div className="container-fluid mobile-display-none">
-                  <div
-                    className="row justify-content-center align-items-end  no-gutters"
-                    style={{ paddingTop: "150px" }}
-                  >
-                    <div className="col-sm-8">
-                      <Link to={leadership?.hero?.youtubeUrl} target="_blank">
-                        <img
-                          src={`${leadership?.hero?.youtubeThumbnail?.data?.attributes?.localFile?.childImageSharp?.fluid?.src}`}
-                          className="gm-loaded gm-observing gm-observing-cb"
-                          className="lazyload"
-                        />
-                      </Link>
-
-                      <h2 className="txt--p2" style={{ marginTop: "30px" }}>
-                        {leadership?.hero?.preHeading}
-                      </h2>
-                      <h1 className="title--title2">
-                        {leadership?.hero?.heading}
-                      </h1>
-                      <br />
-                      <h2 className="txt--p2">
-                        <span className="yellow-bg">
-                          {leadership?.hero?.subHeading}
-                          &#x27F6;
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="container-fluid web-display-none">
-                  <div
-                    className="row justify-content-center align-items-end  no-gutters"
-                    style={{ paddingTop: "150px" }}
-                  >
-                    <div className="col-sm-8">
-                      <Link to={leadership?.hero?.youtubeUrl} target="_blank">
-                        <img
-                          src={`${leadership?.hero?.youtubeThumbnail?.data?.attributes?.localFile?.childImageSharp?.fluid?.src}`}
-                          className="gm-loaded gm-observing gm-observing-cb"
-                          className="lazyload"
-                        />
-                      </Link>
-
-                      <h2 className="txt--p2" style={{ marginTop: "30px" }}>
-                        {leadership?.hero?.preHeading}
-                      </h2>
-                      <h1 className="title--title2">
-                        {leadership?.hero?.heading}
-                      </h1>
-                      <br />
-                      <h2 className="txt--p2">
-                        <span className="yellow-bg">
-                          {leadership?.hero?.subHeading}
-                          &#x27F6;
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <YoutubeHero data={leadership} />
 
               <div className="about__image1">
                 <div className="container-fluid">
@@ -214,6 +154,7 @@ export const query = graphql`
                 youtubeThumbnail {
                   data {
                     attributes {
+                      url
                       localFile {
                         childImageSharp {
                           fluid {

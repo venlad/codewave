@@ -69,6 +69,8 @@ const Industries = ({ data }) => {
                           style={{ fontSize: "60px" }}
                         >
                           {landing?.industryIntro?.heading}
+                          <br />
+                          {landing?.industryIntro?.heading2}
                         </h1>
                       </div>
                     </div>
@@ -83,13 +85,10 @@ const Industries = ({ data }) => {
                           <div
                             className="txt--p3"
                             style={{ marginTop: "-80px" }}
-                          >
-                            <p>{landing?.industryIntro?.para1}</p>
-
-                            <p>{landing?.industryIntro?.para2}</p>
-                            <br />
-                            <br />
-                          </div>
+                            dangerouslySetInnerHTML={{
+                              __html: landing?.industryIntro?.description,
+                            }}
+                          />
                         </div>
                         <div style={{ marginTop: "30px" }}>
                           <img
@@ -160,14 +159,9 @@ const Industries = ({ data }) => {
                       </h3>
 
                       <div className="txt--p3" style={{ marginTop: "30px" }}>
-                        <p
+                        <div
                           dangerouslySetInnerHTML={{
-                            __html: landing?.industryOutro?.para1,
-                          }}
-                        />
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: landing?.industryOutro?.para2,
+                            __html: landing?.industryOutro?.description,
                           }}
                         />
                         <Link to={landing?.industryOutro?.link}>
@@ -222,6 +216,8 @@ export const industryListingQuery = graphql`
               industryIntro {
                 exampleHeading
                 heading
+                heading2
+                description
                 para1
                 para2
                 examples {
@@ -247,6 +243,7 @@ export const industryListingQuery = graphql`
                 link
                 para1
                 para2
+                description
                 textLink
               }
               bannerBgColor

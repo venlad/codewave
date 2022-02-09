@@ -1,5 +1,6 @@
 import { Link, graphql } from "gatsby"
 import React from "react"
+import ContactHeroBanner from "../components/contact/ContactHeroBanner"
 
 const Contact = ({ data }) => {
   const contact = data?.allStrapiContact?.edges[0]?.node?.data?.attributes
@@ -25,69 +26,7 @@ const Contact = ({ data }) => {
                   />
                 </a>
               </div>
-              <div className="about__image1">
-                <div className="container-fluid">
-                  <div
-                    className="row justify-content-center no-gutters"
-                    style={{ textAlign: "center" }}
-                  >
-                    <div className="col-sm-12 ">
-                      <div
-                        className="img-fluid mobile-display-none"
-                        style={{ height: "310px" }}
-                      >
-                        <a
-                          href="https://vidhya10.typeform.com/to/jhletM"
-                          target="_blank"
-                        >
-                          <img
-                            src={
-                              contact?.heroBgLarge?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            className=" lazyload"
-                            style={{
-                              transform: "translate3d(0px, 0px, 0px)",
-                              marginTop: "-35px",
-                              width: "90%",
-                              maxHeight: "395px",
-                              objectFit: "contain",
-                            }}
-                          />
-                        </a>
-
-                        <a
-                          className="typeform-share button"
-                          href="https://vidhya10.typeform.com/to/jhletM"
-                          target="_blank"
-                        >
-                          {" "}
-                        </a>
-                      </div>
-
-                      <div className="img-fluid web-display-none">
-                        <a
-                          className="typeform-share button"
-                          href="https://vidhya10.typeform.com/to/jhletM"
-                          target="_blank"
-                        >
-                          <img
-                            src={
-                              contact?.heroBgSmall?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            className=" lazyload"
-                            style={{
-                              transform: "translate3d(0px, 0px, 0px)",
-                              marginTop: "-35px",
-                            }}
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ContactHeroBanner contact={contact} />
 
               <div className="container-fluid">
                 <div className="row contact__bottom justify-content-center  no-gutters">

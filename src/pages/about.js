@@ -1,6 +1,7 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
+import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 
 const About = ({ data }) => {
@@ -23,61 +24,7 @@ const About = ({ data }) => {
                   />
                 </a>
               </div>
-              <div className="about__top pattern-about">
-                <div className="container-fluid mobile-display-none">
-                  <div
-                    className="row justify-content-center align-items-end  no-gutters"
-                    style={{ paddingTop: "150px" }}
-                  >
-                    <div className="col-sm-8">
-                      <Link to={about?.hero?.youtubeUrl} target="_blank">
-                        <img
-                          src={`${about?.hero?.youtubeThumbnail?.data?.attributes?.localFile?.childImageSharp?.fluid?.src}`}
-                          className="gm-loaded gm-observing gm-observing-cb"
-                          className="lazyload"
-                        />
-                      </Link>
-
-                      <h2 className="txt--p2" style={{ marginTop: "30px" }}>
-                        {about?.hero?.preHeading}
-                      </h2>
-                      <h1 className="title--title2">{about?.hero?.heading}</h1>
-                      <br />
-                      <h2 className="txt--p2">
-                        <span className="yellow-bg">
-                          {about?.hero?.subHeading}
-                          &#x27F6;
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="container-fluid web-display-none">
-                  <div className="row justify-content-center align-items-end  no-gutters">
-                    <div className="col-sm-8">
-                      <Link to={about?.hero?.youtubeUrl} target="_blank">
-                        <img
-                          src={`${about?.hero?.youtubeThumbnail?.data?.attributes?.localFile?.childImageSharp?.fluid?.src}`}
-                          className="gm-loaded gm-observing gm-observing-cb"
-                          className="lazyload"
-                        />
-                      </Link>
-
-                      <h2 className="txt--p2" style={{ marginTop: "30px" }}>
-                        {about?.hero?.preHeading}
-                      </h2>
-                      <h1 className="title--title2">{about?.hero?.heading}</h1>
-                      <br />
-                      <h2 className="txt--p2">
-                        <span className="yellow-bg">
-                          {about?.hero?.subHeading}
-                          &#x27F6;
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <YoutubeHero data={about} />
 
               <div className="about__image1">
                 <div className="container-fluid">
@@ -222,7 +169,10 @@ const About = ({ data }) => {
                       </div>
                     </div>
                     <div className="col-sm-1"></div>
-                    <div className="col-sm-5 col-md-4">
+                    <div
+                      className="col-sm-5 col-md-4"
+                      style={{ marginTop: "30px" }}
+                    >
                       <div className="about__who-content">
                         <h4 className="txt--p5">
                           <span className="title__number">
@@ -268,7 +218,7 @@ const About = ({ data }) => {
                       <div className="img-fluid">
                         <picture
                           className="work__bg-image"
-                          style={{ marginTop: "-60px" }}
+                          style={{ margin: "30px 0px" }}
                         >
                           <img
                             src={

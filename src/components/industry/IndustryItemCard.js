@@ -1,7 +1,7 @@
-import { Link } from "gatsby";
-import React from "react";
+import { Link } from "gatsby"
+import React from "react"
 
-const IndustryItemCard = ({ data }) => {
+const IndustryItemCard = ({ data, arabic }) => {
   return (
     <>
       <div
@@ -13,10 +13,14 @@ const IndustryItemCard = ({ data }) => {
         <Link
           data-cursor-type="medium"
           data-cursor-text=""
-          to={`/industries/${data?.attributes?.commonSlug}`}
+          to={
+            arabic
+              ? `/ar/industries/${data?.attributes?.commonSlug}`
+              : `/industries/${data?.attributes?.commonSlug}`
+          }
         >
           <img
-            src={`${data?.attributes?.industrylistimg?.data?.attributes?.url}`}
+            src={data?.attributes?.industrylistimg?.data?.attributes?.url}
             className="lazyload"
             style={{
               objectFit: "contain",
@@ -40,7 +44,7 @@ const IndustryItemCard = ({ data }) => {
         </Link>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default IndustryItemCard;
+export default IndustryItemCard

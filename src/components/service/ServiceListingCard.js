@@ -1,14 +1,20 @@
-import { Link } from "gatsby";
-import React from "react";
+import { Link } from "gatsby"
+import React from "react"
 
-const ServiceListingCard = ({ data }) => {
+const ServiceListingCard = ({ data, arabic }) => {
   return (
     <>
       <div
         className="col-sm-3 col-md-3 margin-left-plus-10 services-bg-hover"
         style={{ marginLeft: "10px" }}
       >
-        <Link to={`/services/${data?.attributes?.commonSlug}`}>
+        <Link
+          to={
+            arabic
+              ? `/ar/services/${data?.attributes?.commonSlug}`
+              : `/services/${data?.attributes?.commonSlug}`
+          }
+        >
           <img
             src={`${data?.attributes?.thumbnail?.data?.attributes?.url}`}
             className="lazyload"
@@ -34,7 +40,7 @@ const ServiceListingCard = ({ data }) => {
               padding: "0px 25px",
             }}
           >
-            {data?.attributes?.thumbnailPoints?.map((item) => (
+            {data?.attributes?.thumbnailPoints?.map(item => (
               <>
                 - {item?.listitems}
                 <br />
@@ -44,7 +50,7 @@ const ServiceListingCard = ({ data }) => {
         </Link>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ServiceListingCard;
+export default ServiceListingCard

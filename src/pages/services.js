@@ -3,6 +3,7 @@ import React from "react"
 import ServiceListingCard from "../components/service/ServiceListingCard"
 import ServicesOffered from "../components/service/ServicesOffered"
 import FooterAboveText from "../components/shared/FooterAboveText"
+import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 
 const Service = ({ data }) => {
@@ -29,67 +30,7 @@ const Service = ({ data }) => {
                   />
                 </a>
               </div>
-              <div className="about__top pattern-team">
-                <div className="container-fluid mobile-display-none">
-                  <div
-                    className="row justify-content-center align-items-end  no-gutters"
-                    style={{ paddingTop: "150px" }}
-                  >
-                    <div className="col-sm-8">
-                      <a href={serviceData?.hero?.youtubeUrl} target="_blank">
-                        <img
-                          src={`${serviceData?.hero?.youtubeThumbnail?.data?.attributes?.url}`}
-                          className="gm-loaded gm-observing gm-observing-cb"
-                          className="lazyload"
-                        />
-                      </a>
-
-                      <h2 className="txt--p2" style={{ marginTop: "30px" }}>
-                        {serviceData?.hero?.preHeading}
-                      </h2>
-                      <h1 className="title--title2">
-                        {serviceData?.hero?.heading}
-                      </h1>
-                      <br />
-                      <h2 className="txt--p2">
-                        <span className="yellow-bg">
-                          {serviceData?.hero?.subHeading}
-                          &#x27F6;
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="container-fluid web-display-none">
-                  <div
-                    className="row justify-content-center align-items-end  no-gutters"
-                    style={{ paddingTop: "150px" }}
-                  >
-                    <div className="col-sm-8">
-                      <a href={serviceData?.hero?.youtubeUrl} target="_blank">
-                        <img
-                          src={`${serviceData?.hero?.youtubeThumbnail?.data?.attributes?.url}`}
-                          className="lazyload"
-                        />
-                      </a>
-                      <h2 className="txt--p2" style={{ marginTop: "30px" }}>
-                        {serviceData?.hero?.preHeading}
-                      </h2>
-                      <h1 className="title--title2">
-                        {serviceData?.hero?.heading}
-                      </h1>
-                      <br />
-                      <h2 className="txt--p2">
-                        <span className="yellow-bg">
-                          {serviceData?.hero?.subHeading}
-                          &#x27F6;
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <YoutubeHero data={serviceData} />
 
               <div className="about__what">
                 <div className="container-fluid">
@@ -189,6 +130,13 @@ export const servicePageQuery = graphql`
                   data {
                     attributes {
                       url
+                      localFile {
+                        childImageSharp {
+                          fluid {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
                     }
                   }
                 }

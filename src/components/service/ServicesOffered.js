@@ -1,5 +1,5 @@
-import React from "react";
-import TextSlider from "../TextSlider";
+import React from "react"
+import TextSlider from "../TextSlider"
 
 const ServicesOffered = ({
   imgOnRight,
@@ -116,7 +116,7 @@ const ServicesOffered = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ServicesOffered;
+export default ServicesOffered

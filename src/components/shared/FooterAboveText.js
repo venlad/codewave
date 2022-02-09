@@ -92,7 +92,7 @@ const FooterAboveText = ({ arabic, customData }) => {
 
               <Link to={footerData?.link}>
                 <button className="download__button">
-                  {footerData?.btnText} &#x27F6;
+                  {footerData?.btnText}
                 </button>
               </Link>
               <br />
@@ -140,7 +140,7 @@ const FooterAboveText = ({ arabic, customData }) => {
           <div className="row justify-content-center no-gutters">
             <div
               className="col-sm-12 col-md-6 col-lg-12"
-              style={{ marginTop: "45px", opacity: 0.9 }}
+              style={{ marginTop: "65px", opacity: 0.9 }}
             >
               {footerData?.contactImages?.map((item, i) => (
                 <a href={item?.link} target="_blank">
@@ -148,6 +148,7 @@ const FooterAboveText = ({ arabic, customData }) => {
                     style={{
                       width: "165px",
                       objectFit: "contain",
+                      objectPosition: "center",
                       paddingRight: "40px",
                     }}
                     src={item?.storyImage?.data?.attributes?.url}
