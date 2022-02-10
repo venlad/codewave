@@ -10,6 +10,11 @@ const Service = ({ pageContext, data }) => {
     delay: 500,
   })
 
+  const success = useInView({
+    threshold: 0.25,
+    delay: 500,
+  })
+
   const serviceData = pageContext?.localizedData
   const commonSection =
     data?.allStrapiServicesingle?.edges[0]?.node?.data?.attributes
@@ -20,8 +25,8 @@ const Service = ({ pageContext, data }) => {
   return (
     <>
       <div id="app">
-        <div className="app-container" data-namespace="work-detail">
-          <div className="content-wrapper scrollable" data-scrollbar>
+        <div className="app-container" data-namespace="about">
+          <div className="content-wrapper scrollable">
             <div className="main">
               <div
                 className="work-detail"
@@ -34,11 +39,11 @@ const Service = ({ pageContext, data }) => {
               >
                 <div
                   className="module module--header"
-                  style={{ backgroundColor: serviceData?.bgColor }}
+                  style={{ backgroundColor: "#ff4066" }}
                 >
                   <img
                     src={`${serviceData?.hero?.bgImage?.data?.attributes?.url}`}
-                    style={{ opacity: 0.3 }}
+                    style={{ opacity: 0.3, objectFit: "contain" }}
                     className="module--header__bg lazyload"
                   />
                   <div className="module module--title">
@@ -52,13 +57,19 @@ const Service = ({ pageContext, data }) => {
                             className="title--title1"
                             style={{ color: "#fff" }}
                           >
-                            {serviceData?.hero?.heading
-                              .split(" ")
-                              .slice(
-                                0,
-                                serviceData?.hero?.heading.split(" ").length / 2
-                              )
-                              .join(" ")}
+                            <span style={{ whiteSpace: "nowrap" }}>
+                              {serviceData?.hero?.heading
+                                .split(" ")
+                                .slice(
+                                  0,
+                                  Math.ceil(
+                                    serviceData?.hero?.heading.split(" ")
+                                      .length / 2
+                                  )
+                                )
+                                .join(" ")}
+                            </span>
+                            <br />
                             <span style={{ color: "black" }}>
                               {serviceData?.hero?.heading
                                 .split(" ")
@@ -76,9 +87,9 @@ const Service = ({ pageContext, data }) => {
                               className="lazyload"
                               src={`${serviceData?.hero?.image?.data?.attributes?.url}`}
                               style={{
-                                marginTop: "224px",
-                                marginLeft: "100px",
-                                width: "75%",
+                                marginTop: "185px",
+                                marginLeft: "30px",
+                                width: "70%",
                               }}
                             />
                           </picture>
@@ -261,7 +272,17 @@ const Service = ({ pageContext, data }) => {
                     </div>
                   </div>
 
-                  <div>
+                  <div
+                    ref={success.ref}
+                    style={{
+                      background:
+                        success.inView &&
+                        "linear-gradient(0deg, #efefef, white 100%) no-repeat",
+                      transitionProperty: "background",
+                      transitionDuration: "1s",
+                      transitionTimingFunction: "linear",
+                    }}
+                  >
                     <SuccessStories data={commonSection?.sucessStories} />
                     <SuccessStories
                       data={commonSection?.latestThinking}

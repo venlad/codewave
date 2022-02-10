@@ -1,4 +1,6 @@
 import React from "react"
+import styled from "styled-components"
+import RevealImage from "../shared/RevealImage"
 import TextSlider from "../TextSlider"
 
 const ServicesOffered = ({
@@ -14,12 +16,16 @@ const ServicesOffered = ({
         <div className="container-fluid">
           <div className="row no-gutters">
             <div className="col-sm-1 col-md-2"></div>
+
             <div
-              className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-center align-items-center"
-              style={{ backgroundColor: imgOnRight?.bgColor }}
+              className="col-sm-4 col-md-4 d-flex justify-content-center align-items-center"
+              style={{
+                backgroundColor: imgOnRight?.bgColor,
+                minHeight: "740px",
+              }}
             >
-              <div className="img-fluid">
-                {isRightVideo ? (
+              {isRightVideo ? (
+                <RevealImage>
                   <video width="426px" autoPlay={true} muted={true} loop={true}>
                     <source
                       src={`${imgOnRight?.image?.data?.attributes?.url}`}
@@ -28,18 +34,22 @@ const ServicesOffered = ({
                     Oops! Your browser does not support the video tag. Please
                     download the latest version of Chrome.
                   </video>
-                ) : (
+                </RevealImage>
+              ) : (
+                <RevealImage>
                   <img
-                    className="work__bg-image"
+                    className="img-fluid"
+                    style={{ objectFit: "cover" }}
                     src={
                       imgOnRight?.image?.data?.attributes?.localFile
                         ?.childImageSharp?.fluid?.src
                     }
                     alt=""
                   />
-                )}
-              </div>
+                </RevealImage>
+              )}
             </div>
+
             <div className="col-sm-1 col-md-1"></div>
             <div className="col-sm-3 col-md-4">
               <h4 className="txt--p5">
@@ -87,10 +97,13 @@ const ServicesOffered = ({
             </div>
             <div className="col-sm-1 col-md-1"></div>
             <div
-              className="col-sm-4 col-md-4 d-flex justify-content-center align-items-center"
-              style={{ backgroundColor: imgOnLeft?.bgColor }}
+              className="col-sm-4 col-md-4 "
+              style={{
+                backgroundColor: imgOnLeft?.bgColor,
+                minHeight: "740px",
+              }}
             >
-              <div className="img-fluid">
+              <>
                 {isLeftVideo ? (
                   <video width="426px" autoPlay={true} muted={true} loop={true}>
                     <source
@@ -102,7 +115,8 @@ const ServicesOffered = ({
                   </video>
                 ) : (
                   <img
-                    className="work__bg-image"
+                    className="img-fluid"
+                    style={{ objectFit: "cover" }}
                     src={
                       imgOnLeft?.image?.data?.attributes?.localFile
                         ?.childImageSharp?.fluid?.src
@@ -110,7 +124,7 @@ const ServicesOffered = ({
                     alt=""
                   />
                 )}
-              </div>
+              </>
             </div>
           </div>
         </div>
@@ -120,3 +134,5 @@ const ServicesOffered = ({
 }
 
 export default ServicesOffered
+
+const ImgWrapper = styled.div``

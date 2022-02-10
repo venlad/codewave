@@ -22,3 +22,19 @@
     margin-top: -100px;
   }
 }
+
+/* from here */
+
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  background-color: #e2e2e2;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #595a5f;
+}

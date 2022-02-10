@@ -3,6 +3,7 @@ import React from "react"
 import ServiceListingCard from "../components/service/ServiceListingCard"
 import ServicesOffered from "../components/service/ServicesOffered"
 import FooterAboveText from "../components/shared/FooterAboveText"
+import RevealImage from "../components/shared/RevealImage"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 
