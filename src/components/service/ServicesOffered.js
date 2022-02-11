@@ -21,32 +21,28 @@ const ServicesOffered = ({
               className="col-sm-4 col-md-4 d-flex justify-content-center align-items-center"
               style={{
                 backgroundColor: imgOnRight?.bgColor,
-                minHeight: "740px",
+                minHeight: "720px",
               }}
             >
               {isRightVideo ? (
-                <RevealImage>
-                  <video width="426px" autoPlay={true} muted={true} loop={true}>
-                    <source
-                      src={`${imgOnRight?.image?.data?.attributes?.url}`}
-                      type="video/mp4"
-                    />
-                    Oops! Your browser does not support the video tag. Please
-                    download the latest version of Chrome.
-                  </video>
-                </RevealImage>
-              ) : (
-                <RevealImage>
-                  <img
-                    className="img-fluid"
-                    style={{ objectFit: "cover" }}
-                    src={
-                      imgOnRight?.image?.data?.attributes?.localFile
-                        ?.childImageSharp?.fluid?.src
-                    }
-                    alt=""
+                <video width="426px" autoPlay={true} muted={true} loop={true}>
+                  <source
+                    src={`${imgOnRight?.image?.data?.attributes?.url}`}
+                    type="video/mp4"
                   />
-                </RevealImage>
+                  Oops! Your browser does not support the video tag. Please
+                  download the latest version of Chrome.
+                </video>
+              ) : (
+                <img
+                  className="img-fluid"
+                  style={{ objectFit: "cover" }}
+                  src={
+                    imgOnRight?.image?.data?.attributes?.localFile
+                      ?.childImageSharp?.fluid?.src
+                  }
+                  alt=""
+                />
               )}
             </div>
 
@@ -100,7 +96,7 @@ const ServicesOffered = ({
               className="col-sm-4 col-md-4 "
               style={{
                 backgroundColor: imgOnLeft?.bgColor,
-                minHeight: "740px",
+                minHeight: "720px",
               }}
             >
               <>
