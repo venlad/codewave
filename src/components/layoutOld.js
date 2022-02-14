@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
-import Header from "../components/header"
-import Footer from "../components/footer"
+import Header from "./header"
+import Footer from "./footer"
 import { Helmet } from "react-helmet"
 const TemplateWrapper = ({ children }) => {
   const [loading, setLoading] = useState(true)
