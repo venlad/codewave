@@ -23,7 +23,7 @@ const Service = ({ pageContext, data }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar arabic={true} />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">

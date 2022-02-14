@@ -65,6 +65,10 @@ module.exports = {
             name: `career`,
             endpoint: `api/career?populate=*`,
           },
+          {
+            name: `navbar`,
+            endpoint: `api/navbar?populate=*`,
+          },
         ],
       },
     },

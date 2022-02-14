@@ -14,7 +14,7 @@ const Contact = ({ data }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar arabic={true} />
       <div id="app">
         <div className="app-container" data-namespace="contact">
           <div className="content-wrapper scrollable">
