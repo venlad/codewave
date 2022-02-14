@@ -12,7 +12,7 @@ const RevealImage = ({ children, image }) => {
         /> */}
         <ImgWrapper>{children}</ImgWrapper>
         <Reveal trigger={<div />}>
-          <Tween from={{ height: "600px" }} to={{ height: "0px" }} duration={1}>
+          <Tween from={{ height: "0px" }} to={{ height: "600px" }} duration={1}>
             <Mask />
           </Tween>
         </Reveal>
@@ -38,10 +38,11 @@ const Mask = styled.div`
   height: 100%;
   position: relative;
   top: 0;
+  left: 0;
 `
 
 const ImgWrapper = styled.div`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;

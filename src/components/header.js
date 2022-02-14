@@ -1,3 +1,4 @@
+import AOS from "aos"
 import React, { Component } from "react"
 import { Helmet } from "react-helmet"
 
@@ -16,6 +17,7 @@ class Header extends Component {
   }
 
   componentDidMount() {
+    AOS.init()
     const script = document.createElement("script")
     script.src = "https://cdn.gumlet.com/gumlet.js/2.0/gumlet.min.js"
     script.async = true
@@ -90,9 +92,7 @@ class Header extends Component {
             data-dist="5"
             data-cursor-type="medium"
             data-cursor-text=""
-          >
-            Works
-          </a>
+          ></a>
         </div>
         <div class="works-button-mob">
           <a

@@ -4038,17 +4038,19 @@ html.msie .toggle:hover {
 .nav__primary {
   width: 66.66666667vw;
   padding-left: 10vw;
+  margin-top: -140px;
 }
 @media (max-width: 768.98px) {
   .nav__primary {
     padding-left: 7.66666667vw;
+    margin-top: unset;
   }
 }
 @media (max-width: 576.98px) {
   .nav__primary {
     width: 100%;
     padding-left: 0;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 }
 .nav__primary ul li {
