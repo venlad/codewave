@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: `https://strapi-be-cw.herokuapp.com`,
         queryLimit: 1000, // Defaults to 100
         collectionTypes: [
           {
@@ -60,6 +60,10 @@ module.exports = {
           {
             name: `contact`,
             endpoint: `api/contact?populate=*`,
+          },
+          {
+            name: `career`,
+            endpoint: `api/career?populate=*`,
           },
         ],
       },

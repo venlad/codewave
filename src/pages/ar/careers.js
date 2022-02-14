@@ -1,10 +1,12 @@
 import { graphql } from "gatsby"
 import React from "react"
-import FooterAboveText from "../components/shared/FooterAboveText"
-import TextSlider from "../components/TextSlider"
+import FooterAboveText from "../../components/shared/FooterAboveText"
+import TextSlider from "../../components/TextSlider"
 
 const Careers = ({ data }) => {
-  const careers = data?.allStrapiCareer?.edges[0]?.node?.data?.attributes
+  const careers =
+    data?.allStrapiCareer?.edges[0]?.node?.data?.attributes?.localizations
+      ?.data[0]?.attributes
 
   console.log(careers, "PROPS")
 
@@ -285,82 +287,88 @@ const Careers = ({ data }) => {
 export default Careers
 
 export const query = graphql`
-  query careersEn {
+  query careersAr {
     allStrapiCareer {
       edges {
         node {
           data {
             attributes {
-              applyBtnLink
-              applyBtnText
-              banner2 {
+              localizations {
                 data {
                   attributes {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              careersBanner {
-                data {
-                  attributes {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              commonFooter {
-                btnLink
-                btnText
-                heading
-                line1
-                line2
-              }
-              hero {
-                heading
-                preHeading
-                subHeading
-                youtubeUrl
-                youtubeThumbnail {
-                  data {
-                    attributes {
-                      localFile {
-                        childImageSharp {
-                          fluid {
-                            ...GatsbyImageSharpFluid
+                    applyBtnLink
+                    applyBtnText
+                    banner2 {
+                      data {
+                        attributes {
+                          localFile {
+                            childImageSharp {
+                              fluid {
+                                ...GatsbyImageSharpFluid
+                              }
+                            }
                           }
                         }
                       }
                     }
-                  }
-                }
-              }
-              jobsOpen {
-                title
-              }
-              locale
-              youtubeVideos {
-                heading
-                id
-                subHeading
-                youtubeUrl
-                youtubeThumbnail {
-                  data {
-                    attributes {
-                      localFile {
-                        childImageSharp {
-                          fluid {
-                            ...GatsbyImageSharpFluid
+                    careersBanner {
+                      data {
+                        attributes {
+                          localFile {
+                            childImageSharp {
+                              fluid {
+                                ...GatsbyImageSharpFluid
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    commonFooter {
+                      btnLink
+                      btnText
+                      heading
+                      line1
+                      line2
+                    }
+                    hero {
+                      heading
+                      preHeading
+                      subHeading
+                      youtubeUrl
+                      youtubeThumbnail {
+                        data {
+                          attributes {
+                            localFile {
+                              childImageSharp {
+                                fluid {
+                                  ...GatsbyImageSharpFluid
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    jobsOpen {
+                      title
+                    }
+                    locale
+                    youtubeVideos {
+                      heading
+                      id
+                      subHeading
+                      youtubeUrl
+                      youtubeThumbnail {
+                        data {
+                          attributes {
+                            localFile {
+                              childImageSharp {
+                                fluid {
+                                  ...GatsbyImageSharpFluid
+                                }
+                              }
+                            }
                           }
                         }
                       }
