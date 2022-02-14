@@ -3,7 +3,7 @@ import React from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const GrowingLeader = ({ data }) => {
   const growingLeader =

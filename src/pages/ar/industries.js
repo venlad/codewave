@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import IndustryItemCard from "../../components/industry/IndustryItemCard"
 import TextSlider from "../../components/TextSlider"
 import FooterAboveText from "../../components/shared/FooterAboveText"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const Industries = ({ data }) => {
   const commonSections =

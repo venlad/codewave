@@ -5,7 +5,7 @@ import ServicesOffered from "../../components/service/ServicesOffered"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const Service = ({ data }) => {
   const serviceData =

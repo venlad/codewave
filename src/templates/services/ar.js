@@ -3,7 +3,7 @@ import React from "react"
 import SuccessStories from "../../components/service/SuccessStories"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import { useInView } from "react-intersection-observer"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const Service = ({ pageContext, data }) => {
   const { ref, inView, entry } = useInView({

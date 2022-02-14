@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const Careers = ({ data }) => {
   const careers =

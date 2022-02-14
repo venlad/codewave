@@ -1,7 +1,7 @@
 import { Link, graphql } from "gatsby"
 import React from "react"
 import ContactHeroBanner from "../../components/contact/ContactHeroBanner"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const Contact = ({ data }) => {
   const contact =

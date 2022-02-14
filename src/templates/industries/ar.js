@@ -5,7 +5,7 @@ import IndustryOutroText from "../../components/industry/IndustryOutroText"
 import Offers from "../../components/service/Offers"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 const CommonBanner = styled.div`
   background-image: ${props => `url(${props.image})`};

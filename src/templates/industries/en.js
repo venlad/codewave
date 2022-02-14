@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import IndustryOutroText from "../../components/industry/IndustryOutroText"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout.js"
 
 import Offers from "../../components/service/Offers"
 import FooterAboveText from "../../components/shared/FooterAboveText"
