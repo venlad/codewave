@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import IndustryItemCard from "../../components/industry/IndustryItemCard"
 import TextSlider from "../../components/TextSlider"
 import FooterAboveText from "../../components/shared/FooterAboveText"
+import Layout from "../../components/Layout"
 
 const Industries = ({ data }) => {
   const commonSections =
@@ -17,7 +18,7 @@ const Industries = ({ data }) => {
       ?.data
 
   return (
-    <>
+    <Layout>
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -182,7 +183,7 @@ const Industries = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 

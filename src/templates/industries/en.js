@@ -2,7 +2,8 @@ import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import IndustryOutroText from "../../components/industry/IndustryOutroText"
-import Layout from "../../components/layout"
+import Layout from "../../components/Layout"
+
 import Offers from "../../components/service/Offers"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
@@ -16,7 +17,7 @@ const IndustriesPage = ({ pageContext, data }) => {
   const industry = pageContext?.data
 
   return (
-    <>
+    <Layout>
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -130,7 +131,7 @@ const IndustriesPage = ({ pageContext, data }) => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 

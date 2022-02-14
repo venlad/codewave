@@ -3,8 +3,8 @@ import { graphql, Link } from "gatsby"
 import IndustryItemCard from "../components/industry/IndustryItemCard"
 import TextSlider from "../components/TextSlider"
 import FooterAboveText from "../components/shared/FooterAboveText"
-import Header from "../components/header"
-import Navbar from "../components/Navbar"
+
+import Layout from "../components/Layout"
 
 const Industries = ({ data }) => {
   const industries = data?.allStrapiIndustrie?.edges[0]?.node?.data
@@ -15,8 +15,7 @@ const Industries = ({ data }) => {
     data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
 
   return (
-    <>
-      <Navbar />
+    <Layout>
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -181,7 +180,7 @@ const Industries = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 

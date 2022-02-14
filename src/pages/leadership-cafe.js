@@ -3,14 +3,13 @@ import React from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
+import Layout from "../components/Layout"
 
 const Leadership = ({ data }) => {
   const leadership = data?.allStrapiLeadership?.edges[0]?.node?.data?.attributes
 
-  console.log(leadership, "PROPS")
-
   return (
-    <>
+    <Layout>
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -133,7 +132,7 @@ const Leadership = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </>
+    </Layout>
   )
 }
 

@@ -3,6 +3,7 @@ import React from "react"
 import SuccessStories from "../../components/service/SuccessStories"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import { useInView } from "react-intersection-observer"
+import Layout from "../../components/Layout"
 
 const Service = ({ pageContext, data }) => {
   const { ref, inView, entry } = useInView({
@@ -23,7 +24,7 @@ const Service = ({ pageContext, data }) => {
   console.log(serviceData, "PROPS")
 
   return (
-    <>
+    <Layout>
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -297,7 +298,7 @@ const Service = ({ pageContext, data }) => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 
