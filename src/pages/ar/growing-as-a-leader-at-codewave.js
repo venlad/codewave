@@ -3,17 +3,16 @@ import React from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const GrowingLeader = ({ data }) => {
   const growingLeader =
     data?.allStrapiGrowingLeader?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes
 
-  console.log(growingLeader, "PROPS")
-
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -149,7 +148,7 @@ const GrowingLeader = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </Layout>
+    </>
   )
 }
 

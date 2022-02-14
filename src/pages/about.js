@@ -1,6 +1,6 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
-import Layout from "../components/Layout"
+import Navbar from "../components/Navbar"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
@@ -10,7 +10,8 @@ const About = ({ data }) => {
   const section = about?.sections
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -240,7 +241,7 @@ const About = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </Layout>
+    </>
   )
 }
 

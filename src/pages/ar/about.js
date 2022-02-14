@@ -3,7 +3,7 @@ import React from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const About = ({ data }) => {
   const about =
@@ -13,7 +13,8 @@ const About = ({ data }) => {
   const section = about?.sections
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -243,7 +244,7 @@ const About = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </Layout>
+    </>
   )
 }
 

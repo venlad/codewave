@@ -5,7 +5,7 @@ import ServicesOffered from "../../components/service/ServicesOffered"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const Service = ({ data }) => {
   const serviceData =
@@ -23,7 +23,8 @@ const Service = ({ data }) => {
       ?.commonSections
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -91,7 +92,7 @@ const Service = ({ data }) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 

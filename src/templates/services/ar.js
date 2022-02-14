@@ -3,7 +3,7 @@ import React from "react"
 import SuccessStories from "../../components/service/SuccessStories"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import { useInView } from "react-intersection-observer"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const Service = ({ pageContext, data }) => {
   const { ref, inView, entry } = useInView({
@@ -21,10 +21,9 @@ const Service = ({ pageContext, data }) => {
     data?.allStrapiServicesingle?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes?.commonSectionTeam
 
-  console.log(serviceData, "PROPS")
-
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -298,7 +297,7 @@ const Service = ({ pageContext, data }) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 

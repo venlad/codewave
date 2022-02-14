@@ -2,13 +2,14 @@ import { graphql } from "gatsby"
 import React from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import TextSlider from "../components/TextSlider"
-import Layout from "../components/Layout"
+import Navbar from "../components/Navbar"
 
 const Careers = ({ data }) => {
   const careers = data?.allStrapiCareer?.edges[0]?.node?.data?.attributes
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -277,7 +278,7 @@ const Careers = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </Layout>
+    </>
   )
 }
 

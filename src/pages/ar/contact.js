@@ -1,7 +1,7 @@
 import { Link, graphql } from "gatsby"
 import React from "react"
 import ContactHeroBanner from "../../components/contact/ContactHeroBanner"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const Contact = ({ data }) => {
   const contact =
@@ -13,7 +13,8 @@ const Contact = ({ data }) => {
   const lastContacts = contacts.slice(-2)
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="contact">
           <div className="content-wrapper scrollable">
@@ -178,7 +179,7 @@ const Contact = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </Layout>
+    </>
   )
 }
 

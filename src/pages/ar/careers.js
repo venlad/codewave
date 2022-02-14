@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const Careers = ({ data }) => {
   const careers =
@@ -10,7 +10,8 @@ const Careers = ({ data }) => {
       ?.data[0]?.attributes
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -279,7 +280,7 @@ const Careers = ({ data }) => {
       </div>
 
       <div className="overlay"></div>
-    </Layout>
+    </>
   )
 }
 

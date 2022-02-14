@@ -5,7 +5,7 @@ import IndustryOutroText from "../../components/industry/IndustryOutroText"
 import Offers from "../../components/service/Offers"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
-import Layout from "../../components/Layout.js"
+import Navbar from "../../components/Navbar"
 
 const CommonBanner = styled.div`
   background-image: ${props => `url(${props.image})`};
@@ -16,7 +16,8 @@ const IndustriesPage = ({ pageContext, data }) => {
   const industry = pageContext?.localizedData
 
   return (
-    <Layout>
+    <>
+      <Navbar />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -130,7 +131,7 @@ const IndustriesPage = ({ pageContext, data }) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 
