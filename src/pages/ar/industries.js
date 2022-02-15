@@ -1,21 +1,25 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import IndustryItemCard from "../components/industry/IndustryItemCard"
-import TextSlider from "../components/TextSlider"
-import FooterAboveText from "../components/shared/FooterAboveText"
-import Navbar from "../components/Navbar"
+import IndustryItemCard from "../../components/industry/IndustryItemCard"
+import TextSlider from "../../components/TextSlider"
+import FooterAboveText from "../../components/shared/FooterAboveText"
+import Navbar from "../../components/Navbar"
 
 const Industries = ({ data }) => {
-  const industries = data?.allStrapiIndustrie?.edges[0]?.node?.data
   const commonSections =
     data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
       ?.commonSections
   const landing =
     data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
+      ?.localizations?.data[0]?.attributes
+
+  const industries =
+    data?.allStrapiIndustrie?.edges[0]?.node?.data[0]?.attributes?.localizations
+      ?.data
 
   return (
     <>
-      <Navbar />
+      <Navbar arabic={true} />
       <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
@@ -143,7 +147,7 @@ const Industries = ({ data }) => {
                   style={{ margin: "0 auto" }}
                 >
                   {industries.map((industry, i) => (
-                    <IndustryItemCard data={industry} key={i} />
+                    <IndustryItemCard data={industry} key={i} arabic={true} />
                   ))}
                 </div>
               </div>
@@ -187,7 +191,7 @@ const Industries = ({ data }) => {
 export default Industries
 
 export const industryListingQuery = graphql`
-  query industryListingEn {
+  query industryListingAr {
     allStrapiIndustrie {
       edges {
         node {
@@ -204,6 +208,23 @@ export const industryListingQuery = graphql`
                   }
                 }
               }
+              localizations {
+                data {
+                  attributes {
+                    title
+                    commonSlug
+                    smallDescription
+                    industrylistimg {
+                      data {
+                        attributes {
+                          alternativeText
+                          url
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -215,39 +236,60 @@ export const industryListingQuery = graphql`
           data {
             attributes {
               locale
-              industryIntro {
-                exampleHeading
-                heading
-                heading2
-                description
-                para1
-                para2
-                examples {
-                  listitems
-                }
-                image {
-                  data {
-                    attributes {
-                      url
-                      localFile {
-                        childImageSharp {
-                          fluid {
-                            ...GatsbyImageSharpFluid
+              localizations {
+                data {
+                  attributes {
+                    industryIntro {
+                      exampleHeading
+                      heading
+                      heading2
+                      description
+                      para1
+                      para2
+                      examples {
+                        listitems
+                      }
+                      image {
+                        data {
+                          attributes {
+                            url
+                            localFile {
+                              childImageSharp {
+                                fluid {
+                                  ...GatsbyImageSharpFluid
+                                }
+                              }
+                            }
                           }
+                        }
+                      }
+                    }
+                    industryOutro {
+                      heading
+                      link
+                      para1
+                      para2
+                      textLink
+                      description
+                    }
+                    locale
+                    bannerBgColor
+
+                    heading1
+                    heading2
+
+                    bannerImage {
+                      data {
+                        attributes {
+                          url
+                          alternativeText
                         }
                       }
                     }
                   }
                 }
               }
-              industryOutro {
-                heading
-                link
-                para1
-                para2
-                description
-                textLink
-              }
+
               bannerBgColor
 
               heading1
