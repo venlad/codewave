@@ -153,6 +153,19 @@ const Navbar = ({ arabic }) => {
 
   const menuToggle = () => {
     setOpen(!open)
+
+    let temp = document.getElementById("test")
+    var animationDelay = 0.4
+    for (let i = 0; i < temp.children.length; i++) {
+      temp.children[i].className = "right_nav_animation"
+      // temp.children[i].style['animation-delay'] = animationDelay * i + 's';
+      // temp.children[i].style['opacity']= "1";
+      console.log(temp.children[i])
+      temp.children[i].style["animation-delay"] = animationDelay * i + "s"
+    }
+    // temp.children.map((item,index)=>{
+    //     console.log(item)
+    // })
   }
 
   useEffect(() => {
@@ -229,7 +242,7 @@ const Navbar = ({ arabic }) => {
             </Link>
           </div>
           <div className="nav__primary">
-            <ul className="servicesUl">
+            <ul className="servicesUl" id="test">
               {navbar?.primaryRoutes?.map((item, i) => (
                 <li style={{ opacity: 1 }}>
                   <Link to={item?.link} className="" key={i}>

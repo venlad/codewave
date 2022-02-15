@@ -3,6 +3,7 @@ const path = require(`path`)
 exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`)
 }
+
 // Create blog pages dynamically
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -319,3 +320,19 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+// //custom loader
+// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+//   if (stage === "build-html" || stage === "develop-html") {
+//     actions.setWebpackConfig({
+//       module: {
+//         rules: [
+//           {
+//             test: /gsap/,
+//             use: loaders.null(),
+//           },
+//         ],
+//       },
+//     })
+//   }
+// }

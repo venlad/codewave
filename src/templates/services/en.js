@@ -4,6 +4,7 @@ import SuccessStories from "../../components/service/SuccessStories"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import { useInView } from "react-intersection-observer"
 import Navbar from "../../components/Navbar"
+import styled from "styled-components"
 
 const Service = ({ pageContext, data }) => {
   const { ref, inView, entry } = useInView({
@@ -13,7 +14,6 @@ const Service = ({ pageContext, data }) => {
 
   const success = useInView({
     threshold: 0.25,
-    delay: 500,
   })
 
   const serviceData = pageContext?.data
@@ -272,23 +272,17 @@ const Service = ({ pageContext, data }) => {
                     </div>
                   </div>
 
-                  <div
+                  <SucessWrapper
+                    className="work-detail"
                     ref={success.ref}
-                    style={{
-                      background:
-                        success.inView &&
-                        "linear-gradient(0deg, #efefef, white 100%) no-repeat",
-                      transitionProperty: "background",
-                      transitionDuration: "1s",
-                      transitionTimingFunction: "linear",
-                    }}
+                    inView={success.inView}
                   >
                     <SuccessStories data={commonSection?.sucessStories} />
                     <SuccessStories
                       data={commonSection?.latestThinking}
                       title={"Latest Thinking"}
                     />
-                  </div>
+                  </SucessWrapper>
 
                   <FooterAboveText arabic={false} />
                 </div>
@@ -348,4 +342,15 @@ export const query = graphql`
       }
     }
   }
+`
+const SucessWrapper = styled.div`
+  background: ${props =>
+    props.inView
+      ? `linear-gradient(0deg, #efefef, transparent 100%) no-repeat`
+      : `unset`};
+  background-size: cover;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  transition: all 1s ease-out;
 `

@@ -21,28 +21,35 @@ const ServicesOffered = ({
               className="col-sm-4 col-md-4 d-flex justify-content-center align-items-center"
               style={{
                 backgroundColor: imgOnRight?.bgColor,
-                minHeight: "720px",
               }}
             >
               {isRightVideo ? (
-                <video width="426px" autoPlay={true} muted={true} loop={true}>
-                  <source
-                    src={`${imgOnRight?.image?.data?.attributes?.url}`}
-                    type="video/mp4"
-                  />
-                  Oops! Your browser does not support the video tag. Please
-                  download the latest version of Chrome.
-                </video>
+                <RevealImage>
+                  <video
+                    width="426px"
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    style={{ margin: "0 auto" }}
+                  >
+                    <source
+                      src={`${imgOnRight?.image?.data?.attributes?.url}`}
+                      type="video/mp4"
+                    />
+                    Oops! Your browser does not support the video tag. Please
+                    download the latest version of Chrome.
+                  </video>
+                </RevealImage>
               ) : (
-                <img
-                  className="img-fluid"
-                  style={{ objectFit: "cover" }}
-                  src={
-                    imgOnRight?.image?.data?.attributes?.localFile
-                      ?.childImageSharp?.fluid?.src
-                  }
-                  alt=""
-                />
+                <RevealImage>
+                  <img
+                    src={
+                      imgOnRight?.image?.data?.attributes?.localFile
+                        ?.childImageSharp?.fluid?.src
+                    }
+                    alt=""
+                  />
+                </RevealImage>
               )}
             </div>
 
@@ -96,29 +103,37 @@ const ServicesOffered = ({
               className="col-sm-4 col-md-4 "
               style={{
                 backgroundColor: imgOnLeft?.bgColor,
-                minHeight: "720px",
               }}
             >
               <>
                 {isLeftVideo ? (
-                  <video width="426px" autoPlay={true} muted={true} loop={true}>
-                    <source
-                      src={`${imgOnLeft?.image?.data?.attributes?.url}`}
-                      type="video/mp4"
-                    />
-                    Oops! Your browser does not support the video tag. Please
-                    download the latest version of Chrome.
-                  </video>
+                  <RevealImage>
+                    <video
+                      width="426px"
+                      autoPlay={true}
+                      muted={true}
+                      loop={true}
+                    >
+                      <source
+                        src={`${imgOnLeft?.image?.data?.attributes?.url}`}
+                        type="video/mp4"
+                      />
+                      Oops! Your browser does not support the video tag. Please
+                      download the latest version of Chrome.
+                    </video>
+                  </RevealImage>
                 ) : (
-                  <img
-                    className="img-fluid"
-                    style={{ objectFit: "cover" }}
-                    src={
-                      imgOnLeft?.image?.data?.attributes?.localFile
-                        ?.childImageSharp?.fluid?.src
-                    }
-                    alt=""
-                  />
+                  <RevealImage>
+                    <img
+                      className="img-fluid"
+                      style={{ objectFit: "cover" }}
+                      src={
+                        imgOnLeft?.image?.data?.attributes?.localFile
+                          ?.childImageSharp?.fluid?.src
+                      }
+                      alt=""
+                    />
+                  </RevealImage>
                 )}
               </>
             </div>
