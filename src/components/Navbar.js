@@ -137,12 +137,11 @@ const Navbar = ({ arabic }) => {
   const industries = data?.allStrapiIndustrie?.edges[0]?.node?.data
   const services = data?.allStrapiService?.edges[0]?.node?.data
   const industriesAr =
-    data?.allStrapiIndustrie?.edges[0]?.node?.data?.attributes?.localizations
-      ?.data[0]?.attributes
+    data?.allStrapiIndustrie?.edges[0]?.node?.data[0]?.attributes?.localizations
+      ?.data
   const servicesAr =
-    data?.allStrapiService?.edges[0]?.node?.data?.attributes?.localizations
-      ?.data[0]?.attributes
-
+    data?.allStrapiService?.edges[0]?.node?.data[0]?.attributes?.localizations
+      ?.data
   const navData = data?.allStrapiNavbar?.edges[0]?.node?.data?.attributes
   const navDataAr =
     data?.allStrapiNavbar?.edges[0]?.node?.data?.attributes?.localizations
@@ -171,8 +170,6 @@ const Navbar = ({ arabic }) => {
       }
     }
   }, [open])
-
-  console.log(navDataAr, "PROPS")
 
   return (
     <>
@@ -294,8 +291,8 @@ const Navbar = ({ arabic }) => {
                   <Link
                     to={
                       arabic
-                        ? `/ar/services/${item?.attributes?.slug}`
-                        : `/services/${item?.attributes?.slug}`
+                        ? `/ar/services/${item?.attributes?.commonSlug}`
+                        : `/services/${item?.attributes?.commonSlug}`
                     }
                   >
                     {item?.attributes?.menuTitle}
@@ -327,8 +324,8 @@ const Navbar = ({ arabic }) => {
                   <Link
                     to={
                       arabic
-                        ? `/ar/industries/${item?.attributes?.slug}`
-                        : `/industries/${item?.attributes?.slug}`
+                        ? `/ar/industries/${item?.attributes?.commonSlug}`
+                        : `/industries/${item?.attributes?.commonSlug}`
                     }
                   >
                     {item?.attributes?.menuTitle}
