@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://strapi-be-cw.herokuapp.com`,
+        apiURL: `http://localhost:1337`,
         queryLimit: 1000, // Defaults to 100
         collectionTypes: [
           {
@@ -68,6 +68,18 @@ module.exports = {
           {
             name: `navbar`,
             endpoint: `api/navbar?populate=*`,
+          },
+          {
+            name: `cookiePolicy`,
+            endpoint: `api/cookie-policy?populate=*`,
+          },
+          {
+            name: `privacyPolicy`,
+            endpoint: `api/privacy-policy?populate=*`,
+          },
+          {
+            name: `termsAndCondition`,
+            endpoint: `api/terms-and-condition?populate=*`,
           },
         ],
       },

@@ -1,11 +1,12 @@
 import { graphql, Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 import Navbar from "../components/Navbar"
 import CursorPointer from "../components/cursor/CursorPointer"
 import RevealImage from "../components/shared/RevealImage"
+import Aos from "aos"
 
 const Leadership = ({ data }) => {
   const leadership = data?.allStrapiLeadership?.edges[0]?.node?.data?.attributes
@@ -17,6 +18,10 @@ const Leadership = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init()
+  }, [])
 
   return (
     <>
