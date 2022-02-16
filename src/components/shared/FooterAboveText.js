@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-const FooterAboveText = ({ arabic, customData }) => {
+const FooterAboveText = ({ arabic, customData, handleMouse }) => {
   const data = useStaticQuery(graphql`
     {
       allStrapiShared {
@@ -91,7 +91,12 @@ const FooterAboveText = ({ arabic, customData }) => {
               <h4 className="txt--p5">{footerData?.line2}</h4>
 
               <Link to={footerData?.link}>
-                <button className="download__button">
+                <button
+                  style={{ cursor: "pointer" }}
+                  className="download__button"
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                >
                   {footerData?.btnText}
                 </button>
               </Link>
@@ -101,7 +106,12 @@ const FooterAboveText = ({ arabic, customData }) => {
               <br />
               <br />
               <h5>
-                <a href="/contact" className="title--title1">
+                <a
+                  href="/contact"
+                  className="title--title1"
+                  onMouseEnter={() => handleMouse(80, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                >
                   Contact us
                   <svg
                     className="lets-talk__arrow"

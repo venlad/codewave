@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import CursorPointer from "../../components/cursor/CursorPointer"
 import IndustryOutroText from "../../components/industry/IndustryOutroText"
 import Navbar from "../../components/Navbar"
 
@@ -16,10 +17,19 @@ const CommonBanner = styled.div`
 const IndustriesPage = ({ pageContext, data }) => {
   const industry = pageContext?.data
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -108,7 +118,11 @@ const IndustriesPage = ({ pageContext, data }) => {
                           target="_blank"
                           className="work-item is-visible"
                         >
-                          <div className="txt--p3">
+                          <div
+                            className="txt--p3"
+                            onMouseEnter={() => handleMouse(80, "VIEW")}
+                            onMouseLeave={() => handleMouse(12, "")}
+                          >
                             <img
                               className="lazyload mobcenter"
                               src={item?.storyImage?.data?.attributes?.url}
@@ -125,9 +139,9 @@ const IndustriesPage = ({ pageContext, data }) => {
                   </div>
                 </div>
               </div>
-              <IndustryOutroText />
+              <IndustryOutroText handleMouse={handleMouse} />
               <TextSlider text="IoT - Digital Transformation - Design Thinking - Architecture" />
-              <FooterAboveText arabic={false} />
+              <FooterAboveText arabic={false} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import { ScrollTrigger, Tween } from "react-gsap"
 
-const SuccessStories = ({ data, title = "Success Stories" }) => {
+const SuccessStories = ({ data, title = "Success Stories", handleMouse }) => {
   return (
     <>
       <div className="module works">
@@ -37,7 +37,12 @@ const SuccessStories = ({ data, title = "Success Stories" }) => {
                   target="_blank"
                   className="work-item is-visible"
                 >
-                  <div className="">
+                  <div
+                    className=""
+                    style={{ cursor: "pointer" }}
+                    onMouseEnter={() => handleMouse(80, "VIEW")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
                     <ScrollTrigger start="0px center" end="bottom" scrub={0.5}>
                       <Tween
                         from={{
@@ -46,8 +51,8 @@ const SuccessStories = ({ data, title = "Success Stories" }) => {
                         to={{
                           y:
                             title === "Success Stories"
-                              ? `${i * -40 + 40}px`
-                              : `${i * 40 - 40}px`,
+                              ? `${i * -45 + 45}px`
+                              : `${i * 45 - 45}px`,
                         }}
                         duration={2}
                       >

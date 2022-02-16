@@ -1,11 +1,12 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import ServiceListingCard from "../../components/service/ServiceListingCard"
 import ServicesOffered from "../../components/service/ServicesOffered"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
 import Navbar from "../../components/Navbar"
+import CursorPointer from "../../components/cursor/CursorPointer"
 
 const Service = ({ data }) => {
   const serviceData =
@@ -22,10 +23,19 @@ const Service = ({ data }) => {
     data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
       ?.commonSections
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar arabic={true} />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -37,7 +47,7 @@ const Service = ({ data }) => {
                   />
                 </a>
               </div>
-              <YoutubeHero data={serviceData} />
+              <YoutubeHero data={serviceData} handleMouse={handleMouse} />
 
               <div className="about__what">
                 <div className="container-fluid">
@@ -49,7 +59,7 @@ const Service = ({ data }) => {
                     }}
                   >
                     {services?.map((item, i) => (
-                      <ServiceListingCard data={item} key={i} arabic={true} />
+                      <ServiceListingCard data={item} key={i} />
                     ))}
                   </div>
                 </div>
@@ -61,6 +71,7 @@ const Service = ({ data }) => {
                 isLeftVideo={false}
                 isRightVideo={false}
                 num={[1, 2]}
+                handleMouse={handleMouse}
               />
               <TextSlider
                 text={
@@ -73,6 +84,7 @@ const Service = ({ data }) => {
                 isLeftVideo={true}
                 isRightVideo={true}
                 num={[3, 4]}
+                handleMouse={handleMouse}
               />
               <TextSlider
                 text={
@@ -85,9 +97,10 @@ const Service = ({ data }) => {
                 isLeftVideo={true}
                 isRightVideo={true}
                 num={[5, 6]}
+                handleMouse={handleMouse}
               />
 
-              <FooterAboveText arabic={true} />
+              <FooterAboveText arabic={true} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

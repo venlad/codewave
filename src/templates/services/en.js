@@ -1,10 +1,11 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import SuccessStories from "../../components/service/SuccessStories"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import { useInView } from "react-intersection-observer"
 import Navbar from "../../components/Navbar"
 import styled from "styled-components"
+import CursorPointer from "../../components/cursor/CursorPointer"
 
 const Service = ({ pageContext, data }) => {
   const { ref, inView, entry } = useInView({
@@ -21,10 +22,19 @@ const Service = ({ pageContext, data }) => {
     data?.allStrapiServicesingle?.edges[0]?.node?.data?.attributes
       ?.commonSectionTeam
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -277,14 +287,18 @@ const Service = ({ pageContext, data }) => {
                     ref={success.ref}
                     inView={success.inView}
                   >
-                    <SuccessStories data={commonSection?.sucessStories} />
+                    <SuccessStories
+                      data={commonSection?.sucessStories}
+                      handleMouse={handleMouse}
+                    />
                     <SuccessStories
                       data={commonSection?.latestThinking}
                       title={"Latest Thinking"}
+                      handleMouse={handleMouse}
                     />
                   </SucessWrapper>
 
-                  <FooterAboveText arabic={false} />
+                  <FooterAboveText arabic={false} handleMouse={handleMouse} />
                 </div>
               </div>
             </div>

@@ -1,18 +1,29 @@
 import { graphql, Link } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 import Navbar from "../components/Navbar"
+import CursorPointer from "../components/cursor/CursorPointer"
+import RevealImage from "../components/shared/RevealImage"
 
 const GrowingLeader = ({ data }) => {
   const growingLeader =
     data?.allStrapiGrowingLeader?.edges[0]?.node?.data?.attributes
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -25,20 +36,21 @@ const GrowingLeader = ({ data }) => {
                   />
                 </a>
               </div>
-              <YoutubeHero data={growingLeader} />
+              <YoutubeHero data={growingLeader} handleMouse={handleMouse} />
               <div className="about__image1">
                 <div className="container-fluid">
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <img
-                          src={
-                            growingLeader?.leaderBanner?.data?.attributes
-                              ?.localFile?.childImageSharp?.fluid?.src
-                          }
-                          className=" lazyload"
-                          style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                        />
+                        <RevealImage>
+                          <img
+                            src={
+                              growingLeader?.leaderBanner?.data?.attributes
+                                ?.localFile?.childImageSharp?.fluid?.src
+                            }
+                            style={{ objectFit: "cover" }}
+                          />
+                        </RevealImage>
                       </div>
                     </div>
                   </div>
@@ -87,14 +99,16 @@ const GrowingLeader = ({ data }) => {
                         style={{ marginTop: "30px" }}
                       >
                         <picture className="work__bg-image">
-                          <img
-                            src={
-                              growingLeader?.growLeaderSection?.image?.data
-                                ?.attributes?.localFile?.childImageSharp?.fluid
-                                ?.src
-                            }
-                            className="lazyload"
-                          />{" "}
+                          <RevealImage>
+                            <img
+                              src={
+                                growingLeader?.growLeaderSection?.image?.data
+                                  ?.attributes?.localFile?.childImageSharp
+                                  ?.fluid?.src
+                              }
+                              style={{ objectFit: "cover" }}
+                            />
+                          </RevealImage>
                         </picture>
                       </div>
                     </div>
@@ -117,20 +131,32 @@ const GrowingLeader = ({ data }) => {
                             }}
                           />
                           <br />
-                          <Link to={growingLeader?.growLeaderSection?.btnLink1}>
+                          <Link
+                            to={growingLeader?.growLeaderSection?.btnLink1}
+                            onMouseEnter={() => handleMouse(40, "")}
+                            onMouseLeave={() => handleMouse(12, "")}
+                          >
                             <button
                               className="download__button margin-mob-bottom-20"
                               style={{
                                 backgroundColor: "#006eff",
                                 color: "white",
                                 marginRight: "5px",
+                                cursor: "pointer",
                               }}
                             >
                               {growingLeader?.growLeaderSection?.btnText1}
                             </button>
                           </Link>
-                          <Link to={growingLeader?.growLeaderSection?.btnLink2}>
-                            <button className="download__button margin-mob-bottom-20">
+                          <Link
+                            to={growingLeader?.growLeaderSection?.btnLink2}
+                            onMouseEnter={() => handleMouse(40, "")}
+                            onMouseLeave={() => handleMouse(12, "")}
+                          >
+                            <button
+                              className="download__button margin-mob-bottom-20"
+                              style={{ cursor: "pointer" }}
+                            >
                               {growingLeader?.growLeaderSection?.btnText2}
                             </button>
                           </Link>
@@ -140,7 +166,7 @@ const GrowingLeader = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <FooterAboveText />
+              <FooterAboveText arabic={false} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

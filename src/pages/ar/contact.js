@@ -1,6 +1,7 @@
 import { Link, graphql } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import ContactHeroBanner from "../../components/contact/ContactHeroBanner"
+import CursorPointer from "../../components/cursor/CursorPointer"
 import Navbar from "../../components/Navbar"
 
 const Contact = ({ data }) => {
@@ -12,10 +13,19 @@ const Contact = ({ data }) => {
 
   const lastContacts = contacts.slice(-2)
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar arabic={true} />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="contact">
           <div className="content-wrapper scrollable">
             <div className="main contact">
@@ -124,7 +134,12 @@ const Contact = ({ data }) => {
                       <div className="contact__social-links">
                         {contact?.followUs?.map((item, i) => (
                           <div className="txt--p3" key={i}>
-                            <a href={item?.link} target="_blank">
+                            <a
+                              href={item?.link}
+                              target="_blank"
+                              onMouseEnter={() => handleMouse(40, "")}
+                              onMouseLeave={() => handleMouse(12, "")}
+                            >
                               {item?.text}
                             </a>
                           </div>

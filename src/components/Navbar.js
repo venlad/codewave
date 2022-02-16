@@ -1,10 +1,7 @@
-import React, { useEffect, useState, useRouter } from "react"
-import Star8 from "../images/star8.png"
-import Star2 from "../images/star2.png"
-import Star1 from "../images/star1.png"
+import React, { useEffect, useState, useRouter, useRef } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
-const Navbar = ({ arabic }) => {
+const Navbar = ({ arabic, handleMouse }) => {
   const data = useStaticQuery(graphql`
     {
       allStrapiNavbar {
@@ -148,27 +145,16 @@ const Navbar = ({ arabic }) => {
       ?.data[0]?.attributes
 
   const [open, setOpen] = useState(false)
-
   const [navbar, setNavbar] = useState()
+
+  const btnRef = useRef(null)
 
   const menuToggle = () => {
     setOpen(!open)
-
-    let temp = document.getElementById("test")
-    var animationDelay = 0.4
-    for (let i = 0; i < temp.children.length; i++) {
-      temp.children[i].className = "right_nav_animation"
-      // temp.children[i].style['animation-delay'] = animationDelay * i + 's';
-      // temp.children[i].style['opacity']= "1";
-      console.log(temp.children[i])
-      temp.children[i].style["animation-delay"] = animationDelay * i + "s"
-    }
-    // temp.children.map((item,index)=>{
-    //     console.log(item)
-    // })
   }
 
   useEffect(() => {
+    console.log(btnRef.current, "REf")
     if (arabic) {
       setNavbar(navDataAr)
     } else {
@@ -186,11 +172,11 @@ const Navbar = ({ arabic }) => {
 
   return (
     <>
-      <div id="cursor">
-        <div className="cursor__label"></div>
-        <div className="cursor__bg"></div>
-      </div>
-      <div className="logo">
+      <div
+        className="logo"
+        onMouseEnter={() => handleMouse(40, "")}
+        onMouseLeave={() => handleMouse(12, "")}
+      >
         <a
           href="#"
           onclick="window.location.href = window.location.origin;"
@@ -203,13 +189,20 @@ const Navbar = ({ arabic }) => {
           />
         </a>
       </div>
-      <div className="say-hello">
+      <div
+        ref={btnRef}
+        className="say-hello"
+        onMouseEnter={() => handleMouse(40, "")}
+        onMouseLeave={() => handleMouse(12, "")}
+      >
         <Link to="/contact" className="magnetize">
           Contact
         </Link>
       </div>
 
       <div
+        onMouseEnter={() => handleMouse(40, "")}
+        onMouseLeave={() => handleMouse(12, "")}
         className={open ? "toggle magnetize is-open" : "toggle  magnetize"}
         onClick={menuToggle}
       >

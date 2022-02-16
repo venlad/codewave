@@ -1,9 +1,11 @@
 import { graphql, Link } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
 import Navbar from "../../components/Navbar"
+import CursorPointer from "../../components/cursor/CursorPointer"
+import RevealImage from "../../components/shared/RevealImage"
 
 const About = ({ data }) => {
   const about =
@@ -12,36 +14,46 @@ const About = ({ data }) => {
 
   const section = about?.sections
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar arabic={true} />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
               <div className="logo--mobile ">
-                <a href="/" data-section="0" className=" is-current ">
+                <Link to="/" data-section="0" className=" is-current ">
                   <img
                     src="https://res.cloudinary.com/image/upload/c_scale,w_140/v1566712787/codewave-logo-2x_tl2pvw.png"
                     className="lazyload"
                   />
-                </a>
+                </Link>
               </div>
-              <YoutubeHero data={about} />
+              <YoutubeHero data={about} handleMouse={handleMouse} />
 
               <div className="about__image1">
                 <div className="container-fluid">
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <img
-                          className=" lazyload"
-                          style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                          src={
-                            about?.aboutBanner?.data?.attributes?.localFile
-                              ?.childImageSharp?.fluid?.src
-                          }
-                        />
+                        <RevealImage>
+                          <img
+                            style={{ objectFit: "contain" }}
+                            src={
+                              about?.aboutBanner?.data?.attributes?.localFile
+                                ?.childImageSharp?.fluid?.src
+                            }
+                          />
+                        </RevealImage>
                       </div>
                     </div>
                   </div>
@@ -85,13 +97,15 @@ const About = ({ data }) => {
                     <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                       <div className="img-fluid">
                         <picture className="work__bg-image">
-                          <img
-                            src={
-                              section[1]?.image?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            className="lazyload"
-                          />
+                          <RevealImage>
+                            <img
+                              src={
+                                section[1]?.image?.data?.attributes?.localFile
+                                  ?.childImageSharp?.fluid?.src
+                              }
+                              style={{ objectFit: "cover" }}
+                            />
+                          </RevealImage>
                         </picture>
                       </div>
                     </div>
@@ -161,13 +175,15 @@ const About = ({ data }) => {
                     <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                       <div className="img-fluid" style={{ marginTop: "30px" }}>
                         <picture className="work__bg-image">
-                          <img
-                            src={
-                              section[3]?.image?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            className="lazyload"
-                          />
+                          <RevealImage>
+                            <img
+                              src={
+                                section[3]?.image?.data?.attributes?.localFile
+                                  ?.childImageSharp?.fluid?.src
+                              }
+                              style={{ objectFit: "cover" }}
+                            />
+                          </RevealImage>
                         </picture>
                       </div>
                     </div>
@@ -223,13 +239,15 @@ const About = ({ data }) => {
                           className="work__bg-image"
                           style={{ margin: "30px 0px" }}
                         >
-                          <img
-                            src={
-                              section[4]?.image?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            className="lazyload"
-                          />
+                          <RevealImage>
+                            <img
+                              src={
+                                section[4]?.image?.data?.attributes?.localFile
+                                  ?.childImageSharp?.fluid?.src
+                              }
+                              style={{ objectFit: "cover" }}
+                            />
+                          </RevealImage>
                         </picture>
                       </div>
                     </div>
@@ -237,7 +255,7 @@ const About = ({ data }) => {
                 </div>
               </div>
 
-              <FooterAboveText />
+              <FooterAboveText arabic={true} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

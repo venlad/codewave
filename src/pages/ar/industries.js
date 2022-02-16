@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
 import IndustryItemCard from "../../components/industry/IndustryItemCard"
 import TextSlider from "../../components/TextSlider"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import Navbar from "../../components/Navbar"
+import CursorPointer from "../../components/cursor/CursorPointer"
 
 const Industries = ({ data }) => {
   const commonSections =
@@ -17,10 +18,19 @@ const Industries = ({ data }) => {
     data?.allStrapiIndustrie?.edges[0]?.node?.data[0]?.attributes?.localizations
       ?.data
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar arabic={true} />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -147,7 +157,7 @@ const Industries = ({ data }) => {
                   style={{ margin: "0 auto" }}
                 >
                   {industries.map((industry, i) => (
-                    <IndustryItemCard data={industry} key={i} arabic={true} />
+                    <IndustryItemCard data={industry} key={i} />
                   ))}
                 </div>
               </div>
@@ -170,7 +180,11 @@ const Industries = ({ data }) => {
                             __html: landing?.industryOutro?.description,
                           }}
                         />
-                        <Link to={landing?.industryOutro?.link}>
+                        <Link
+                          to={landing?.industryOutro?.link}
+                          onMouseEnter={() => handleMouse(40, "")}
+                          onMouseLeave={() => handleMouse(12, "")}
+                        >
                           <u>{landing?.industryOutro?.textLink}</u>
                         </Link>
                       </div>
@@ -179,7 +193,7 @@ const Industries = ({ data }) => {
                 </div>
               </div>
               <TextSlider text="IoT - Digital Transformation - Design Thinking - Architecture" />
-              <FooterAboveText arabic={false} />
+              <FooterAboveText arabic={true} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

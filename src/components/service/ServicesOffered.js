@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import RevealImage from "../shared/RevealImage"
@@ -9,6 +10,7 @@ const ServicesOffered = ({
   isLeftVideo,
   isRightVideo,
   num,
+  handleMouse,
 }) => {
   return (
     <>
@@ -66,11 +68,16 @@ const ServicesOffered = ({
                 ))}
               </ul>
 
-              <a href="/contact">
-                <button className="download__button">
+              <Link to="/contact">
+                <button
+                  className="download__button"
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                  style={{ cursor: "Pointer" }}
+                >
                   {imgOnRight?.btnText} &#x27F6;
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -92,11 +99,16 @@ const ServicesOffered = ({
                 ))}
               </ul>
 
-              <a href="/contact">
-                <button className="download__button">
+              <Link to="/contact">
+                <button
+                  className="download__button"
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                  style={{ cursor: "Pointer" }}
+                >
                   {imgOnLeft?.btnText} &#x27F6;
                 </button>
-              </a>
+              </Link>
             </div>
             <div className="col-sm-1 col-md-1"></div>
             <div
@@ -145,5 +157,3 @@ const ServicesOffered = ({
 }
 
 export default ServicesOffered
-
-const ImgWrapper = styled.div``

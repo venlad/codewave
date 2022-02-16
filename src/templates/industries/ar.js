@@ -6,6 +6,7 @@ import Offers from "../../components/service/Offers"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
 import Navbar from "../../components/Navbar"
+import CursorPointer from "../../components/cursor/CursorPointer"
 
 const CommonBanner = styled.div`
   background-image: ${props => `url(${props.image})`};
@@ -15,10 +16,19 @@ const CommonBanner = styled.div`
 const IndustriesPage = ({ pageContext, data }) => {
   const industry = pageContext?.localizedData
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar arabic={true} />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -107,7 +117,11 @@ const IndustriesPage = ({ pageContext, data }) => {
                           target="_blank"
                           className="work-item is-visible"
                         >
-                          <div className="txt--p3">
+                          <div
+                            className="txt--p3"
+                            onMouseEnter={() => handleMouse(80, "VIEW")}
+                            onMouseLeave={() => handleMouse(12, "")}
+                          >
                             <img
                               className="lazyload mobcenter"
                               src={item?.storyImage?.data?.attributes?.url}
@@ -124,9 +138,9 @@ const IndustriesPage = ({ pageContext, data }) => {
                   </div>
                 </div>
               </div>
-              <IndustryOutroText />
+              <IndustryOutroText handleMouse={handleMouse} />
               <TextSlider text="IoT - Digital Transformation - Design Thinking - Architecture" />
-              <FooterAboveText arabic={false} />
+              <FooterAboveText arabic={true} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

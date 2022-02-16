@@ -1,16 +1,21 @@
 import React from "react"
 
-const YoutubeHero = ({ data }) => {
+const YoutubeHero = ({ data, handleMouse }) => {
   return (
     <>
-      <div className="about__top pattern-team">
+      <div className="about__top pattern-team" style={{ cursor: "none" }}>
         <div className="container-fluid">
           <div
             className="row justify-content-center align-items-end  no-gutters"
             style={{ paddingTop: "150px" }}
           >
             <div className="col-sm-8">
-              <a href={data?.hero?.youtubeUrl} target="_blank">
+              <a
+                href={data?.hero?.youtubeUrl}
+                target="_blank"
+                onMouseEnter={() => handleMouse(80, "WATCH")}
+                onMouseLeave={() => handleMouse(12, "")}
+              >
                 <img
                   src={`${
                     data?.hero?.youtubeThumbnail?.data?.attributes?.localFile

@@ -1,18 +1,29 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
 import Navbar from "../../components/Navbar"
+import CursorPointer from "../../components/cursor/CursorPointer"
+import RevealImage from "../../components/shared/RevealImage"
 
 const Careers = ({ data }) => {
   const careers =
     data?.allStrapiCareer?.edges[0]?.node?.data?.attributes?.localizations
       ?.data[0]?.attributes
 
+  const [mouseSize, setMouseSize] = useState(12)
+  const [mouseText, setMouseText] = useState("")
+
+  const handleMouse = (size, text) => {
+    setMouseSize(size)
+    setMouseText(text)
+  }
+
   return (
     <>
-      <Navbar arabic={true} />
-      <div id="app">
+      <CursorPointer size={mouseSize} text={mouseText} />
+      <Navbar handleMouse={handleMouse} />
+      <div id="app" style={{ cursor: "none" }}>
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -67,14 +78,15 @@ const Careers = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <img
-                          className=" lazyload"
-                          style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                          src={
-                            careers?.careersBanner?.data?.attributes?.localFile
-                              ?.childImageSharp?.fluid?.src
-                          }
-                        />
+                        <RevealImage>
+                          <img
+                            style={{ objectFit: "cover" }}
+                            src={
+                              careers?.careersBanner?.data?.attributes
+                                ?.localFile?.childImageSharp?.fluid?.src
+                            }
+                          />
+                        </RevealImage>
                       </div>
                     </div>
                   </div>
@@ -260,20 +272,22 @@ const Careers = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <img
-                          src={
-                            careers?.banner2?.data?.attributes?.localFile
-                              ?.childImageSharp?.fluid?.src
-                          }
-                          className=" lazyload"
-                          style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                        />
+                        <RevealImage>
+                          <img
+                            src={
+                              careers?.banner2?.data?.attributes?.localFile
+                                ?.childImageSharp?.fluid?.src
+                            }
+                            className=" lazyload"
+                            style={{ objectFit: "cover" }}
+                          />
+                        </RevealImage>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <FooterAboveText />
+              <FooterAboveText arabic={true} handleMouse={handleMouse} />
             </div>
           </div>
         </div>

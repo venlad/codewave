@@ -1,7 +1,7 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
 import React from "react"
 
-const IndustryOutroText = () => {
+const IndustryOutroText = ({ handleMouse }) => {
   const data = useStaticQuery(graphql`
     {
       allStrapiIndustrysingle {
@@ -44,7 +44,10 @@ const IndustryOutroText = () => {
 
               <p>{sectionData?.para2}</p>
 
-              <u>
+              <u
+                onMouseEnter={() => handleMouse(40, "")}
+                onMouseLeave={() => handleMouse(12, "")}
+              >
                 <Link
                   className="magnetize"
                   style={{
