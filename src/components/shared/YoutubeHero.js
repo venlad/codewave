@@ -1,18 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
+import ModalVideo from "react-modal-video"
 
 const YoutubeHero = ({ data, handleMouse }) => {
+  const [isOpen, setOpen] = useState(false)
+
   return (
     <>
       <div className="about__top pattern-team" style={{ cursor: "none" }}>
         <div className="container-fluid">
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={isOpen}
+            videoId={data?.hero?.youtubeUrl}
+            onClose={() => setOpen(false)}
+          />
           <div
             className="row justify-content-center align-items-end  no-gutters"
             style={{ paddingTop: "150px" }}
           >
             <div className="col-sm-8">
               <a
-                href={data?.hero?.youtubeUrl}
-                target="_blank"
+                href="#"
                 onMouseEnter={() => handleMouse(80, "WATCH")}
                 onMouseLeave={() => handleMouse(12, "")}
               >
@@ -22,6 +31,7 @@ const YoutubeHero = ({ data, handleMouse }) => {
                       ?.childImageSharp?.fluid?.src ||
                     data?.hero?.youtubeThumbnail?.data?.attributes?.url
                   }`}
+                  onClick={() => setOpen(true)}
                   className="gm-loaded gm-observing gm-observing-cb lazyload"
                   style={{
                     width: "100%",
