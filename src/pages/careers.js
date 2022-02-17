@@ -102,7 +102,7 @@ const Careers = ({ data }) => {
                           channel="youtube"
                           autoplay
                           isOpen={isOpen}
-                          videoId={data?.hero?.youtubeUrl}
+                          videoId={item?.youtubeUrl}
                           onClose={() => setOpen(false)}
                         />
                         <div
