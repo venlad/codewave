@@ -81,6 +81,14 @@ module.exports = {
             name: `termsAndCondition`,
             endpoint: `api/terms-and-condition?populate=*`,
           },
+          {
+            name: `survivalManual`,
+            endpoint: `api/survival-manual?populate=*`,
+          },
+          {
+            name: `customerJourney`,
+            endpoint: `api/customer-journey?populate=*`,
+          },
         ],
       },
     },
