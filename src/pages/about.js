@@ -1,5 +1,6 @@
+import Aos from "aos"
 import { graphql, Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import CursorPointer from "../components/cursor/CursorPointer"
 import Navbar from "../components/Navbar"
 import FooterAboveText from "../components/shared/FooterAboveText"
@@ -18,6 +19,12 @@ const About = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init({
+      disable: "mobile",
+    })
+  }, [])
 
   return (
     <>
@@ -41,7 +48,7 @@ const About = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
-                      <div className="img-fluid">
+                      <div className="img-fluid" style={{ minHeight: "400px" }}>
                         <RevealImage>
                           <img
                             style={{ objectFit: "contain" }}
@@ -63,13 +70,16 @@ const About = ({ data }) => {
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-6 col-md-4">
                       <h4 className="txt--p5">
-                        <span className="title__number">
+                        <span className="title__number" data-aos="fade-up">
                           {section[0]?.number}.
                         </span>
                         {section[0]?.preHeading}
                       </h4>
-                      <h3 className="title--title6">{section[0]?.heading}</h3>
+                      <h3 className="title--title6" data-aos="fade-up">
+                        {section[0]?.heading}
+                      </h3>
                       <div
+                        data-aos="fade-up"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: section[0]?.description,
@@ -80,7 +90,9 @@ const About = ({ data }) => {
                     <div className="col-sm-3 col-md-4">
                       <ul className="txt--p5">
                         {section[0]?.listItems?.map((item, i) => (
-                          <li key={i}>- {item?.listitems}</li>
+                          <li data-aos="fade-up" data-aos-delay={i} key={i}>
+                            - {item?.listitems}
+                          </li>
                         ))}
                       </ul>
                     </div>

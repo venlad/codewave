@@ -45,13 +45,28 @@ const YoutubeHero = ({ data, handleMouse }) => {
                 className="txt--p2"
                 style={{ marginTop: "30px" }}
                 data-aos="fade-up"
-                data-aos-duration="1000"
+                data-aos-easing="ease-in-sine"
+                data-aos-duration="700"
               >
                 {data?.hero?.preHeading}
               </h2>
-              <h1 className="title--title2">{data?.hero?.heading}</h1>
+              <h1
+                data-aos="fade-up"
+                data-aos-easing="ease-in-sine"
+                data-aos-duration="700"
+                data-aos-delay="200"
+                className="title--title2"
+              >
+                {data?.hero?.heading}
+              </h1>
               <br />
-              <h2 className="txt--p2">
+              <h2
+                className="txt--p2"
+                data-aos="fade-up"
+                data-aos-easing="ease-in-sine"
+                data-aos-duration="700"
+                data-aos-delay="400"
+              >
                 <span className="yellow-bg">
                   {data?.hero?.subHeading}
                   &#x27F6;

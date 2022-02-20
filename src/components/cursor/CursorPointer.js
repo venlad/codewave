@@ -4,7 +4,7 @@ import "../cursor/cursor.css"
 
 const CursorPointer = ({ text, size = 12, color = "white" }) => {
   return (
-    <Cursor duration={0.5} size={size} color={color} className="cursor__new">
+    <Cursor duration={0.3} size={size} color={color} className="cursor__new">
       <p
         style={{
           width: "100%",

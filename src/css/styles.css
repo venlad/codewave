@@ -8300,3 +8300,13 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.dropdown {
+  width: 100vw;
+  height: 100vh;
+  background: #041235;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 8;
+}
