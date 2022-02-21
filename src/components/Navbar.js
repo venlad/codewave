@@ -173,7 +173,7 @@ const Navbar = ({ arabic, handleMouse }) => {
   }, [open])
 
   return (
-    <>
+    <div style={{ cursor: "none" }}>
       <div
         className="logo"
         onMouseEnter={() => handleMouse(40, "")}
@@ -268,7 +268,10 @@ const Navbar = ({ arabic, handleMouse }) => {
                         }}
                         duration={0.5 * i}
                       >
-                        <div>
+                        <div
+                          onMouseEnter={() => handleMouse(60, "")}
+                          onMouseLeave={() => handleMouse(12, "")}
+                        >
                           <div className="number-mask">
                             <div>0{i + 1}.</div>
                           </div>
@@ -279,7 +282,12 @@ const Navbar = ({ arabic, handleMouse }) => {
                   </li>
                 ))}
               </ul>
-              <ul className="starflex" style={{ marginTop: "66px" }}>
+              <ul
+                className="starflex"
+                style={{ marginTop: "66px" }}
+                onMouseEnter={() => handleMouse(40, "")}
+                onMouseLeave={() => handleMouse(12, "")}
+              >
                 {navbar?.ratings?.slice(0, 2)?.map((item, i) => (
                   <li
                     style={{
@@ -312,7 +320,11 @@ const Navbar = ({ arabic, handleMouse }) => {
                   </li>
                 ))}
               </ul>
-              <ul className="starflex">
+              <ul
+                className="starflex"
+                onMouseEnter={() => handleMouse(40, "")}
+                onMouseLeave={() => handleMouse(12, "")}
+              >
                 {navbar?.ratings?.slice(2)?.map((item, i) => (
                   <li
                     style={{
@@ -365,7 +377,11 @@ const Navbar = ({ arabic, handleMouse }) => {
               </h4>
               <ul>
                 {(arabic ? servicesAr : services)?.map((item, i) => (
-                  <li style={{ opacity: 1 }}>
+                  <li
+                    style={{ opacity: 1 }}
+                    onMouseEnter={() => handleMouse(40, "")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
                     <Link
                       to={
                         arabic
@@ -398,7 +414,11 @@ const Navbar = ({ arabic, handleMouse }) => {
               </h4>
               <ul>
                 {(arabic ? industriesAr : industries)?.map((item, i) => (
-                  <li style={{ opacity: 1 }}>
+                  <li
+                    style={{ opacity: 1 }}
+                    onMouseEnter={() => handleMouse(40, "")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
                     <Link
                       to={
                         arabic
@@ -411,7 +431,11 @@ const Navbar = ({ arabic, handleMouse }) => {
                   </li>
                 ))}
 
-                <li style={{ opacity: 1 }}>
+                <li
+                  style={{ opacity: 1 }}
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                >
                   <a href="https://casestudies.codewave.com/category/more/">
                     More..
                   </a>
@@ -436,12 +460,21 @@ const Navbar = ({ arabic, handleMouse }) => {
               </h4>
               <ul>
                 {navbar?.secondaryRoutes?.map((item, i) => (
-                  <li style={{ opacity: 1 }} key={i}>
+                  <li
+                    style={{ opacity: 1 }}
+                    key={i}
+                    onMouseEnter={() => handleMouse(40, "")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
                     <a href={item?.link}>{item?.text}</a>
                   </li>
                 ))}
 
-                <li style={{ opacity: 1 }}>
+                <li
+                  style={{ opacity: 1 }}
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                >
                   {navbar?.socialLinks?.map((item, i) => (
                     <a
                       href={item?.link}
@@ -461,7 +494,7 @@ const Navbar = ({ arabic, handleMouse }) => {
           </div>
         </Tween>
       </div>
-    </>
+    </div>
   )
 }
 
