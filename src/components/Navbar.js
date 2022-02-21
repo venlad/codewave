@@ -223,13 +223,23 @@ const Navbar = ({ arabic, handleMouse }) => {
           <div></div>
         </div>
       </div>
-      <Tween
-        from={{ y: open ? "0" : "-100%" }}
-        to={{ y: open ? "0" : "-100%" }}
-        duration={open ? 1 : 1}
-      >
-        <div className="nav d-block ">
-          <div className="nav__container dropdown">
+
+      <div className="nav d-block">
+        <Tween
+          from={{ y: open ? "0" : "-100%" }}
+          to={{ y: open ? "0" : "-100%" }}
+          duration={open ? 0.5 : 2}
+        >
+          <div className="nav__bg nav-bg-animation"></div>
+        </Tween>
+        <Tween
+          to={{
+            opacity: open ? 1 : 0,
+            y: open ? "0" : "-7%",
+          }}
+          duration={open ? 0.75 : 0.5}
+        >
+          <div className={`nav__container`}>
             <div className="logo--mobile logo--mobile--white">
               <Link to="/" data-section="0" className=" is-current ">
                 <img
@@ -242,57 +252,102 @@ const Navbar = ({ arabic, handleMouse }) => {
             <div className="nav__primary">
               <ul className="servicesUl" id="test">
                 {navbar?.primaryRoutes?.map((item, i) => (
-                  <Reveal trigger={<li />}>
-                    <Tween
-                      from={{
-                        opacity: open && 0,
-                        transform: open && "translate3d(-100vw, 0, 0)",
-                      }}
-                      ease={open && "back.out(1.4)"}
-                    >
-                      <li style={{ opacity: 1 }}>
-                        <Link to={item?.link} className="" key={i}>
-                          <div>
-                            <div className="number-mask">
-                              <div>0{i + 1}.</div>
-                            </div>
-                            {item?.text}
+                  <li
+                    style={{
+                      overflow: "hidden",
+                      transitionDelay: `${0.25 * i}s`,
+                      transitionDuration: `${0.5 * i}s`,
+                      opacity: open ? 1 : 0,
+                    }}
+                  >
+                    <Link to={item?.link} className="" key={i}>
+                      <Tween
+                        to={{
+                          y: open ? "0" : `-${100 * i}%`,
+                          opacity: open ? 1 : 0,
+                        }}
+                        duration={0.5 * i}
+                      >
+                        <div>
+                          <div className="number-mask">
+                            <div>0{i + 1}.</div>
                           </div>
-                        </Link>
-                      </li>
-                    </Tween>
-                  </Reveal>
+                          {item?.text}
+                        </div>
+                      </Tween>
+                    </Link>
+                  </li>
                 ))}
               </ul>
               <ul className="starflex" style={{ marginTop: "66px" }}>
                 {navbar?.ratings?.slice(0, 2)?.map((item, i) => (
-                  <li style={{ opacity: 1 }}>
-                    <a href={item?.link} target="_blank" className="reviewMenu">
-                      {" "}
-                      <span className="starText">{item?.title}</span>{" "}
-                      <img
-                        src={item?.ratImage?.data?.attributes?.url}
-                        className="starImg"
-                      />{" "}
-                    </a>
+                  <li
+                    style={{
+                      overflow: "hidden",
+                      transitionDelay: `${2.3}s`,
+                      transitionDuration: `${1 * i}s`,
+                      opacity: open ? 1 : 0,
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    <Tween
+                      to={{
+                        y: open ? "0" : `-${100 * i}%`,
+                        opacity: open ? 1 : 0,
+                      }}
+                      duration={0.75 * i}
+                    >
+                      <a
+                        href={item?.link}
+                        target="_blank"
+                        className="reviewMenu"
+                      >
+                        <span className="starText">{item?.title}</span>
+                        <img
+                          src={item?.ratImage?.data?.attributes?.url}
+                          className="starImg"
+                        />
+                      </a>
+                    </Tween>
                   </li>
                 ))}
               </ul>
               <ul className="starflex">
                 {navbar?.ratings?.slice(2)?.map((item, i) => (
-                  <li style={{ opacity: 1, paddingLeft: "25px" }}>
-                    <a href={item?.link} target="_blank" className="reviewMenu">
-                      {" "}
-                      <span className="starText">{item?.title}</span>{" "}
-                      <img
-                        src={item?.ratImage?.data?.attributes?.url}
-                        className="starImg"
-                      />{" "}
-                    </a>
+                  <li
+                    style={{
+                      overflow: "hidden",
+                      transitionDelay: `${2.3}s`,
+                      transitionDuration: `${1 * i}s`,
+                      opacity: open ? 1 : 0,
+                      paddingLeft: "25px",
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    <Tween
+                      to={{
+                        y: open ? "0" : `-${100 * i}%`,
+                        opacity: open ? 1 : 0,
+                      }}
+                      duration={0.75 * i}
+                    >
+                      <a
+                        href={item?.link}
+                        target="_blank"
+                        className="reviewMenu"
+                      >
+                        <span className="starText">{item?.title}</span>
+                        <img
+                          src={item?.ratImage?.data?.attributes?.url}
+                          className="starImg"
+                        />
+                      </a>
+                    </Tween>
                   </li>
                 ))}
               </ul>
             </div>
+
             <div
               className="nav__secondary"
               style={{ marginRight: "5vw", opacity: 1 }}
@@ -404,8 +459,8 @@ const Navbar = ({ arabic, handleMouse }) => {
               </ul>
             </div>
           </div>
-        </div>
-      </Tween>
+        </Tween>
+      </div>
     </>
   )
 }
