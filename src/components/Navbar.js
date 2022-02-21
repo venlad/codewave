@@ -148,6 +148,7 @@ const Navbar = ({ arabic, handleMouse }) => {
 
   const [open, setOpen] = useState(false)
   const [navbar, setNavbar] = useState()
+  const [dropDownClass, setDropDownClass] = useState("")
 
   const btnRef = useRef(null)
 
@@ -169,6 +170,12 @@ const Navbar = ({ arabic, handleMouse }) => {
       } else {
         document.body.style.overflow = "unset"
       }
+    }
+    setDropDownClass("d-block")
+    if (!open) {
+      setTimeout(() => {
+        setDropDownClass("d-none")
+      }, 2000)
     }
   }, [open])
 
@@ -224,7 +231,7 @@ const Navbar = ({ arabic, handleMouse }) => {
         </div>
       </div>
 
-      <div className="nav d-block">
+      <div className={`nav ${open ? "d-block" : dropDownClass}`}>
         <Tween
           from={{ y: open ? "0" : "-100%" }}
           to={{ y: open ? "0" : "-100%" }}

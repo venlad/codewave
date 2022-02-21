@@ -8302,11 +8302,12 @@ body {
 }
 
 .dropdown {
-  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
   background: #041235;
-  position: sticky;
-  left: 0;
-  top: 0;
-  z-index: 8;
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
 }
