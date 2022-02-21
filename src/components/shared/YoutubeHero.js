@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import ModalVideo from "react-modal-video"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const YoutubeHero = ({ data, handleMouse }) => {
   const [isOpen, setOpen] = useState(false)
@@ -46,14 +47,12 @@ const YoutubeHero = ({ data, handleMouse }) => {
                 style={{ marginTop: "30px" }}
                 data-aos="fade-up"
                 data-aos-easing="ease-in-sine"
-                data-aos-duration="700"
               >
                 {data?.hero?.preHeading}
               </h2>
               <h1
                 data-aos="fade-up"
                 data-aos-easing="ease-in-sine"
-                data-aos-duration="700"
                 data-aos-delay="200"
                 className="title--title2"
               >
@@ -64,7 +63,6 @@ const YoutubeHero = ({ data, handleMouse }) => {
                 className="txt--p2"
                 data-aos="fade-up"
                 data-aos-easing="ease-in-sine"
-                data-aos-duration="700"
                 data-aos-delay="400"
               >
                 <span className="yellow-bg">

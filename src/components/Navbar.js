@@ -186,17 +186,13 @@ const Navbar = ({ arabic, handleMouse }) => {
         onMouseEnter={() => handleMouse(40, "")}
         onMouseLeave={() => handleMouse(12, "")}
       >
-        <a
-          href="#"
-          onclick="window.location.href = window.location.origin;"
-          className="magnetize  is-current "
-        >
+        <Link to="/" className="magnetize  is-current ">
           <img
             width="140px"
             src="https://codewave.gumlet.io/image/upload/c_scale,w_140/v1566712787/codewave-logo-2x_tl2pvw.png?w=100&dpr=0.8"
             className="lazyload"
           />
-        </a>
+        </Link>
       </div>
       <div
         ref={btnRef}
