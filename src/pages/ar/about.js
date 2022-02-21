@@ -1,11 +1,12 @@
 import { graphql, Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
 import Navbar from "../../components/Navbar"
 import CursorPointer from "../../components/cursor/CursorPointer"
 import RevealImage from "../../components/shared/RevealImage"
+import Aos from "aos"
 
 const About = ({ data }) => {
   const about =
@@ -21,6 +22,14 @@ const About = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init({
+      disable: "mobile",
+      delay: 100,
+      once: true,
+    })
+  }, [])
 
   return (
     <>
@@ -44,7 +53,7 @@ const About = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
-                      <div className="img-fluid">
+                      <div className="img-fluid" style={{ minHeight: "400px" }}>
                         <RevealImage>
                           <img
                             style={{ objectFit: "contain" }}
@@ -65,14 +74,22 @@ const About = ({ data }) => {
                   <div className="row no-gutters">
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-6 col-md-4">
-                      <h4 className="txt--p5">
+                      <h4 className="txt--p5" data-aos="fade-up">
                         <span className="title__number">
                           {section[0]?.number}.
                         </span>
                         {section[0]?.preHeading}
                       </h4>
-                      <h3 className="title--title6">{section[0]?.heading}</h3>
+                      <h3
+                        className="title--title6"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        {section[0]?.heading}
+                      </h3>
                       <div
+                        data-aos="fade-up"
+                        data-aos-delay="400"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: section[0]?.description,
@@ -83,7 +100,13 @@ const About = ({ data }) => {
                     <div className="col-sm-3 col-md-4">
                       <ul className="txt--p5">
                         {section[0]?.listItems?.map((item, i) => (
-                          <li key={i}>- {item?.listitems}</li>
+                          <li
+                            data-aos="fade-up"
+                            data-aos-delay={i * 250}
+                            key={i}
+                          >
+                            - {item?.listitems}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -94,7 +117,7 @@ const About = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row  no-gutters">
                     <div className="col-sm-1"></div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center">
                       <div className="img-fluid">
                         <picture className="work__bg-image">
                           <RevealImage>
@@ -112,14 +135,22 @@ const About = ({ data }) => {
                     <div className="col-sm-1"></div>
                     <div className="col-sm-5 col-md-4">
                       <div className="about__who-content">
-                        <h4 className="txt--p5">
+                        <h4 className="txt--p5" data-aos="fade-up">
                           <span className="title__number">
                             {section[1]?.number}.
                           </span>
                           {section[1]?.preHeading}
                         </h4>
-                        <h3 className="title--title6">{section[1]?.heading}</h3>
+                        <h3
+                          className="title--title6"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
+                        >
+                          {section[1]?.heading}
+                        </h3>
                         <div
+                          data-aos="fade-up"
+                          data-aos-delay="400"
                           className="txt--p3"
                           dangerouslySetInnerHTML={{
                             __html: section[1]?.description,
@@ -142,14 +173,22 @@ const About = ({ data }) => {
                   <div className="row  no-gutters">
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-5 col-md-4">
-                      <h4 className="txt--p5">
+                      <h4 className="txt--p5" data-aos="fade-up">
                         <span className="title__number">
                           {section[2]?.number}.
                         </span>
                         {section[2]?.preHeading}
                       </h4>
-                      <h3 className="title--title6">{section[2]?.heading}</h3>
+                      <h3
+                        className="title--title6"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        {section[2]?.heading}
+                      </h3>
                       <div
+                        data-aos="fade-up"
+                        data-aos-delay="400"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: section[2]?.description,
@@ -160,7 +199,13 @@ const About = ({ data }) => {
                     <div className="col-sm-4">
                       <ul className="txt--p5">
                         {section[2]?.listItems?.map((item, i) => (
-                          <li key={i}>- {item?.listitems}</li>
+                          <li
+                            key={i}
+                            data-aos="fade-up"
+                            data-aos-delay={i * 250}
+                          >
+                            - {item?.listitems}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -172,7 +217,7 @@ const About = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row  no-gutters">
                     <div className="col-sm-1"></div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center">
                       <div className="img-fluid" style={{ marginTop: "30px" }}>
                         <picture className="work__bg-image">
                           <RevealImage>
@@ -193,15 +238,23 @@ const About = ({ data }) => {
                       style={{ marginTop: "30px" }}
                     >
                       <div className="about__who-content">
-                        <h4 className="txt--p5">
+                        <h4 className="txt--p5" data-aos="fade-up">
                           <span className="title__number">
                             {" "}
                             {section[3]?.number}.
                           </span>
                           {section[3]?.preHeading}
                         </h4>
-                        <h3 className="title--title6">{section[3]?.heading}</h3>
+                        <h3
+                          className="title--title6"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
+                        >
+                          {section[3]?.heading}
+                        </h3>
                         <div
+                          data-aos="fade-up"
+                          data-aos-delay="400"
                           className="txt--p3"
                           dangerouslySetInnerHTML={{
                             __html: section[3]?.description,
@@ -218,14 +271,22 @@ const About = ({ data }) => {
                   <div className="row  no-gutters">
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-6 col-md-4">
-                      <h4 className="txt--p5">
+                      <h4 className="txt--p5" data-aos="fade-up">
                         <span className="title__number">
                           {section[4]?.number}.
                         </span>
                         {section[4]?.preHeading}
                       </h4>
-                      <h3 className="title--title6">{section[4]?.heading}</h3>
+                      <h3
+                        className="title--title6"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        {section[4]?.heading}
+                      </h3>
                       <div
+                        data-aos="fade-up"
+                        data-aos-delay="400"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: section[4]?.description,
@@ -233,7 +294,7 @@ const About = ({ data }) => {
                       />
                     </div>
                     <div className="col-sm-1 col-md-1"></div>
-                    <div className="col-sm-4 col-md-4">
+                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center">
                       <div className="img-fluid">
                         <picture
                           className="work__bg-image"

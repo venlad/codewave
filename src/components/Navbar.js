@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRouter, useRef } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
+import { Reveal, Tween } from "react-gsap"
+
 const Navbar = ({ arabic, handleMouse }) => {
   const data = useStaticQuery(graphql`
     {
@@ -146,6 +148,7 @@ const Navbar = ({ arabic, handleMouse }) => {
 
   const [open, setOpen] = useState(false)
   const [navbar, setNavbar] = useState()
+  const [dropDownClass, setDropDownClass] = useState("")
 
   const btnRef = useRef(null)
 
@@ -168,26 +171,28 @@ const Navbar = ({ arabic, handleMouse }) => {
         document.body.style.overflow = "unset"
       }
     }
+    setDropDownClass("d-block")
+    if (!open) {
+      setTimeout(() => {
+        setDropDownClass("d-none")
+      }, 2000)
+    }
   }, [open])
 
   return (
-    <>
+    <div style={{ cursor: "none" }}>
       <div
         className="logo"
         onMouseEnter={() => handleMouse(40, "")}
         onMouseLeave={() => handleMouse(12, "")}
       >
-        <a
-          href="#"
-          onclick="window.location.href = window.location.origin;"
-          className="magnetize  is-current "
-        >
+        <Link to="/" className="magnetize  is-current ">
           <img
             width="140px"
             src="https://codewave.gumlet.io/image/upload/c_scale,w_140/v1566712787/codewave-logo-2x_tl2pvw.png?w=100&dpr=0.8"
             className="lazyload"
           />
-        </a>
+        </Link>
       </div>
       <div
         ref={btnRef}
@@ -222,173 +227,277 @@ const Navbar = ({ arabic, handleMouse }) => {
         </div>
       </div>
 
-      <div className={open ? "nav d-block " : "nav "}>
-        <div className="nav__bg"></div>
-        <div className="nav__container">
-          <div className="logo--mobile logo--mobile--white">
-            <Link to="/" className=" is-current ">
-              <img
-                width="140px"
-                src="https://res.cloudinary.com/image/upload/c_scale,w_140/v1566712787/codewave-logo-2x_tl2pvw.png"
-                className="lazyload"
-              />
-            </Link>
-          </div>
-          <div className="nav__primary">
-            <ul className="servicesUl" id="test">
-              {navbar?.primaryRoutes?.map((item, i) => (
-                <li style={{ opacity: 1 }}>
-                  <Link to={item?.link} className="" key={i}>
-                    <div className="number-mask">
-                      <div>0{i + 1}.</div>
-                    </div>
-                    {item?.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ul className="starflex" style={{ marginTop: "66px" }}>
-              {navbar?.ratings?.slice(0, 2)?.map((item, i) => (
-                <li style={{ opacity: 1 }}>
-                  <a href={item?.link} target="_blank" className="reviewMenu">
-                    {" "}
-                    <span className="starText">{item?.title}</span>{" "}
-                    <img
-                      src={item?.ratImage?.data?.attributes?.url}
-                      className="starImg"
-                    />{" "}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <ul className="starflex">
-              {navbar?.ratings?.slice(2)?.map((item, i) => (
-                <li style={{ opacity: 1, paddingLeft: "25px" }}>
-                  <a href={item?.link} target="_blank" className="reviewMenu">
-                    {" "}
-                    <span className="starText">{item?.title}</span>{" "}
-                    <img
-                      src={item?.ratImage?.data?.attributes?.url}
-                      className="starImg"
-                    />{" "}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div
-            className="nav__secondary"
-            style={{ marginRight: "5vw", opacity: 1 }}
-          >
-            <h4
-              className="title--title6"
-              style={{
-                fontSize: "24px",
-                color: "white",
-                marginBottom: "20px",
-                textDecoration: "underline",
-              }}
-            >
-              {navbar?.serviceListHeading}
-            </h4>
-            <ul>
-              {(arabic ? servicesAr : services)?.map((item, i) => (
-                <li style={{ opacity: 1 }}>
-                  <Link
-                    to={
-                      arabic
-                        ? `/ar/services/${item?.attributes?.commonSlug}`
-                        : `/services/${item?.attributes?.commonSlug}`
-                    }
+      <div className={`nav ${open ? "d-block" : dropDownClass}`}>
+        <Tween
+          from={{ y: open ? "0" : "-100%" }}
+          to={{ y: open ? "0" : "-100%" }}
+          duration={open ? 0.5 : 2}
+        >
+          <div className="nav__bg nav-bg-animation"></div>
+        </Tween>
+        <Tween
+          to={{
+            opacity: open ? 1 : 0,
+            y: open ? "0" : "-7%",
+          }}
+          duration={open ? 0.75 : 0.5}
+        >
+          <div className={`nav__container`}>
+            <div className="logo--mobile logo--mobile--white">
+              <Link to="/" data-section="0" className=" is-current ">
+                <img
+                  width="140px"
+                  src="https://res.cloudinary.com/image/upload/c_scale,w_140/v1566712787/codewave-logo-2x_tl2pvw.png"
+                  className="lazyload"
+                />
+              </Link>
+            </div>
+            <div className="nav__primary">
+              <ul className="servicesUl" id="test">
+                {navbar?.primaryRoutes?.map((item, i) => (
+                  <li
+                    style={{
+                      overflow: "hidden",
+                      transitionDelay: `${0.25 * i}s`,
+                      transitionDuration: `${0.5 * i}s`,
+                      opacity: open ? 1 : 0,
+                    }}
                   >
-                    {item?.attributes?.menuTitle}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div
-            className="nav__secondary"
-            style={{ marginRight: "5vw", opacity: 1 }}
-          >
-            <h4
-              className="title--title6"
-              style={{
-                fontSize: "24px",
-                color: "white",
-                marginBottom: "20px",
-                marginTop: "50px",
-                textDecoration: "underline",
-              }}
-            >
-              {navbar?.industryListHeading}
-            </h4>
-            <ul>
-              {(arabic ? industriesAr : industries)?.map((item, i) => (
-                <li style={{ opacity: 1 }}>
-                  <Link
-                    to={
-                      arabic
-                        ? `/ar/industries/${item?.attributes?.commonSlug}`
-                        : `/industries/${item?.attributes?.commonSlug}`
-                    }
-                  >
-                    {item?.attributes?.menuTitle}
-                  </Link>
-                </li>
-              ))}
-
-              <li style={{ opacity: 1 }}>
-                <a href="https://casestudies.codewave.com/category/more/">
-                  More..
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div
-            className="nav__secondary"
-            style={{ marginRight: "5vw", opacity: 1 }}
-          >
-            <h4
-              className="title--title6"
-              style={{
-                fontSize: "24px",
-                color: "white",
-                marginBottom: "20px",
-                textDecoration: "underline",
-                marginTop: "7px",
-              }}
-            >
-              {navbar?.otherLinksHeading}
-            </h4>
-            <ul>
-              {navbar?.secondaryRoutes?.map((item, i) => (
-                <li style={{ opacity: 1 }} key={i}>
-                  <a href={item?.link}>{item?.text}</a>
-                </li>
-              ))}
-
-              <li style={{ opacity: 1 }}>
-                {navbar?.socialLinks?.map((item, i) => (
-                  <a
-                    href={item?.link}
-                    style={{ float: "left", marginLeft: `${i * 20}px` }}
-                    target="_blank"
-                  >
-                    <img
-                      src={item?.image?.data?.attributes?.url}
-                      style={{ float: "left" }}
-                      className="lazyload"
-                    />
-                  </a>
+                    <Link to={item?.link} className="" key={i}>
+                      <Tween
+                        to={{
+                          y: open ? "0" : `-${100 * i}%`,
+                          opacity: open ? 1 : 0,
+                        }}
+                        duration={0.5 * i}
+                      >
+                        <div
+                          onMouseEnter={() => handleMouse(60, "")}
+                          onMouseLeave={() => handleMouse(12, "")}
+                        >
+                          <div className="number-mask">
+                            <div>0{i + 1}.</div>
+                          </div>
+                          {item?.text}
+                        </div>
+                      </Tween>
+                    </Link>
+                  </li>
                 ))}
-              </li>
-            </ul>
+              </ul>
+              <ul
+                className="starflex"
+                style={{ marginTop: "66px" }}
+                onMouseEnter={() => handleMouse(40, "")}
+                onMouseLeave={() => handleMouse(12, "")}
+              >
+                {navbar?.ratings?.slice(0, 2)?.map((item, i) => (
+                  <li
+                    style={{
+                      overflow: "hidden",
+                      transitionDelay: `${2.3}s`,
+                      transitionDuration: `${1 * i}s`,
+                      opacity: open ? 1 : 0,
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    <Tween
+                      to={{
+                        y: open ? "0" : `-${100 * i}%`,
+                        opacity: open ? 1 : 0,
+                      }}
+                      duration={0.75 * i}
+                    >
+                      <a
+                        href={item?.link}
+                        target="_blank"
+                        className="reviewMenu"
+                      >
+                        <span className="starText">{item?.title}</span>
+                        <img
+                          src={item?.ratImage?.data?.attributes?.url}
+                          className="starImg"
+                        />
+                      </a>
+                    </Tween>
+                  </li>
+                ))}
+              </ul>
+              <ul
+                className="starflex"
+                onMouseEnter={() => handleMouse(40, "")}
+                onMouseLeave={() => handleMouse(12, "")}
+              >
+                {navbar?.ratings?.slice(2)?.map((item, i) => (
+                  <li
+                    style={{
+                      overflow: "hidden",
+                      transitionDelay: `${2.3}s`,
+                      transitionDuration: `${1 * i}s`,
+                      opacity: open ? 1 : 0,
+                      paddingLeft: "25px",
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    <Tween
+                      to={{
+                        y: open ? "0" : `-${100 * i}%`,
+                        opacity: open ? 1 : 0,
+                      }}
+                      duration={0.75 * i}
+                    >
+                      <a
+                        href={item?.link}
+                        target="_blank"
+                        className="reviewMenu"
+                      >
+                        <span className="starText">{item?.title}</span>
+                        <img
+                          src={item?.ratImage?.data?.attributes?.url}
+                          className="starImg"
+                        />
+                      </a>
+                    </Tween>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className="nav__secondary"
+              style={{ marginRight: "5vw", opacity: 1 }}
+            >
+              <h4
+                className="title--title6"
+                style={{
+                  fontSize: "24px",
+                  color: "white",
+                  marginBottom: "20px",
+                  textDecoration: "underline",
+                }}
+              >
+                {navbar?.serviceListHeading}
+              </h4>
+              <ul>
+                {(arabic ? servicesAr : services)?.map((item, i) => (
+                  <li
+                    style={{ opacity: 1 }}
+                    onMouseEnter={() => handleMouse(40, "")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
+                    <Link
+                      to={
+                        arabic
+                          ? `/ar/services/${item?.attributes?.commonSlug}`
+                          : `/services/${item?.attributes?.commonSlug}`
+                      }
+                    >
+                      {item?.attributes?.menuTitle}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className="nav__secondary"
+              style={{ marginRight: "5vw", opacity: 1 }}
+            >
+              <h4
+                className="title--title6"
+                style={{
+                  fontSize: "24px",
+                  color: "white",
+                  marginBottom: "20px",
+                  marginTop: "50px",
+                  textDecoration: "underline",
+                }}
+              >
+                {navbar?.industryListHeading}
+              </h4>
+              <ul>
+                {(arabic ? industriesAr : industries)?.map((item, i) => (
+                  <li
+                    style={{ opacity: 1 }}
+                    onMouseEnter={() => handleMouse(40, "")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
+                    <Link
+                      to={
+                        arabic
+                          ? `/ar/industries/${item?.attributes?.commonSlug}`
+                          : `/industries/${item?.attributes?.commonSlug}`
+                      }
+                    >
+                      {item?.attributes?.menuTitle}
+                    </Link>
+                  </li>
+                ))}
+
+                <li
+                  style={{ opacity: 1 }}
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                >
+                  <a href="https://casestudies.codewave.com/category/more/">
+                    More..
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div
+              className="nav__secondary"
+              style={{ marginRight: "5vw", opacity: 1 }}
+            >
+              <h4
+                className="title--title6"
+                style={{
+                  fontSize: "24px",
+                  color: "white",
+                  marginBottom: "20px",
+                  textDecoration: "underline",
+                  marginTop: "7px",
+                }}
+              >
+                {navbar?.otherLinksHeading}
+              </h4>
+              <ul>
+                {navbar?.secondaryRoutes?.map((item, i) => (
+                  <li
+                    style={{ opacity: 1 }}
+                    key={i}
+                    onMouseEnter={() => handleMouse(40, "")}
+                    onMouseLeave={() => handleMouse(12, "")}
+                  >
+                    <a href={item?.link}>{item?.text}</a>
+                  </li>
+                ))}
+
+                <li
+                  style={{ opacity: 1 }}
+                  onMouseEnter={() => handleMouse(40, "")}
+                  onMouseLeave={() => handleMouse(12, "")}
+                >
+                  {navbar?.socialLinks?.map((item, i) => (
+                    <a
+                      href={item?.link}
+                      style={{ float: "left", marginLeft: `${i * 20}px` }}
+                      target="_blank"
+                    >
+                      <img
+                        src={item?.image?.data?.attributes?.url}
+                        style={{ float: "left" }}
+                        className="lazyload"
+                      />
+                    </a>
+                  ))}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </Tween>
       </div>
-    </>
+    </div>
   )
 }
 

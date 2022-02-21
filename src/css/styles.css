@@ -8300,3 +8300,14 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #041235;
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}

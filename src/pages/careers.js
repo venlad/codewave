@@ -98,18 +98,18 @@ const Careers = ({ data }) => {
                     <div className="col-sm-1 col-md-1"></div>
                     {careers?.youtubeVideos?.map((item, i) => (
                       <>
-                        <ModalVideo
+                        {/* <ModalVideo
                           channel="youtube"
                           autoplay
                           isOpen={isOpen}
                           videoId={item?.youtubeUrl}
                           onClose={() => setOpen(false)}
-                        />
+                        /> */}
                         <div
                           className="col-sm-4 col-md-4 careers-margin-mob-fix"
                           style={{ marginLeft: "50px" }}
                         >
-                          <a href="#">
+                          <a href={item?.youtubeUrl} target="_blank">
                             <img
                               onClick={() => setOpen(true)}
                               src={
