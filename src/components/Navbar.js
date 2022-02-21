@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRouter, useRef } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
-import { motion } from "framer-motion"
+
 import { Reveal, Tween } from "react-gsap"
 
 const Navbar = ({ arabic, handleMouse }) => {

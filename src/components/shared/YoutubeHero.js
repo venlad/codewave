@@ -9,20 +9,21 @@ const YoutubeHero = ({ data, handleMouse }) => {
     <>
       <div className="about__top pattern-team" style={{ cursor: "none" }}>
         <div className="container-fluid">
-          <ModalVideo
+          {/* <ModalVideo
             channel="youtube"
             autoplay
             isOpen={isOpen}
             videoId={data?.hero?.youtubeUrl}
             onClose={() => setOpen(false)}
-          />
+          /> */}
           <div
             className="row justify-content-center align-items-end  no-gutters"
             style={{ paddingTop: "150px" }}
           >
             <div className="col-sm-8">
               <a
-                href="#"
+                href={data?.hero?.youtubeUrl}
+                target="_blank"
                 onMouseEnter={() => handleMouse(80, "WATCH")}
                 onMouseLeave={() => handleMouse(12, "")}
               >
