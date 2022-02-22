@@ -22,7 +22,6 @@ const About = ({ data }) => {
 
   useEffect(() => {
     Aos.init({
-      disable: "mobile",
       delay: 100,
       once: true,
     })
@@ -114,7 +113,7 @@ const About = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row  no-gutters">
                     <div className="col-sm-1"></div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center">
+                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center justify-content-center">
                       <div className="img-fluid">
                         <picture className="work__bg-image">
                           <RevealImage>
@@ -214,7 +213,7 @@ const About = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row  no-gutters">
                     <div className="col-sm-1"></div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center">
+                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center justify-content-center">
                       <div className="img-fluid" style={{ marginTop: "30px" }}>
                         <picture className="work__bg-image">
                           <RevealImage>
@@ -291,7 +290,7 @@ const About = ({ data }) => {
                       />
                     </div>
                     <div className="col-sm-1 col-md-1"></div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center">
+                    <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex align-items-center justify-content-center">
                       <div className="img-fluid">
                         <picture
                           className="work__bg-image"

@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const RevealImage = ({ children }) => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.25,
+    threshold: 0.5,
     delay: 500,
     triggerOnce: true,
   })
