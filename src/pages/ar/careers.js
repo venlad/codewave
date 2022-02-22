@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar"
 import CursorPointer from "../../components/cursor/CursorPointer"
 import RevealImage from "../../components/shared/RevealImage"
 import ModalVideo from "react-modal-video"
+import YouTubeVideo from "../../components/shared/YouTubeVideo"
 
 const Careers = ({ data }) => {
   const careers =
@@ -100,13 +101,11 @@ const Careers = ({ data }) => {
                     <div className="col-sm-1 col-md-1"></div>
                     {careers?.youtubeVideos?.map((item, i) => (
                       <>
-                        {/* <ModalVideo
-                          channel="youtube"
-                          autoplay
+                        <YouTubeVideo
                           isOpen={isOpen}
-                          videoId={item?.youtubeUrl}
-                          onClose={() => setOpen(false)}
-                        /> */}
+                          close={() => setOpen(false)}
+                          url={item?.youtubeUrl}
+                        />
                         <div
                           className="col-sm-4 col-md-4 careers-margin-mob-fix"
                           style={{ marginLeft: "50px" }}
