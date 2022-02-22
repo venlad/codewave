@@ -110,7 +110,7 @@ const Careers = ({ data }) => {
                           className="col-sm-4 col-md-4 careers-margin-mob-fix"
                           style={{ marginLeft: "50px" }}
                         >
-                          <a href={item?.youtubeUrl} target="_blank">
+                          <div>
                             <img
                               onClick={() => setOpen(true)}
                               src={
@@ -129,7 +129,7 @@ const Careers = ({ data }) => {
                             <h3 className="txt--p5" style={{ color: "#000" }}>
                               {item?.subHeading}
                             </h3>
-                          </a>
+                          </div>
                         </div>
                         <div className="col-sm-1 col-md-1"></div>
                       </>
