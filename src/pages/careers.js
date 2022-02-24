@@ -1,12 +1,13 @@
 import { graphql } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import TextSlider from "../components/TextSlider"
 import Navbar from "../components/Navbar"
 import CursorPointer from "../components/cursor/CursorPointer"
 import RevealImage from "../components/shared/RevealImage"
-import ModalVideo from "react-modal-video"
 import YouTubeVideo from "../components/shared/YouTubeVideo"
+import Aos from "aos"
+import GatsbyImageReveal from "../components/shared/GatsbyImageReveal"
 
 const Careers = ({ data }) => {
   const careers = data?.allStrapiCareer?.edges[0]?.node?.data?.attributes
@@ -19,6 +20,15 @@ const Careers = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init({
+      once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
+    })
+  }, [])
 
   return (
     <>
@@ -41,14 +51,24 @@ const Careers = ({ data }) => {
                 <div className="container-fluid">
                   <div className="row justify-content-center align-items-end  no-gutters">
                     <div className="col-sm-6">
-                      <h2 className="txt--p2">{careers?.hero?.preHeading}</h2>
-                      <h1 className="title--title2 ">
+                      <h2 className="txt--p2" data-aos="fade-up">
+                        {careers?.hero?.preHeading}
+                      </h2>
+                      <h1
+                        className="title--title2"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
                         {careers?.hero?.heading}
                       </h1>
 
                       <br />
                       <br />
-                      <h2 className="txt--p2">
+                      <h2
+                        className="txt--p2"
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                      >
                         <span className="yellow-bg">
                           {careers?.hero?.subHeading}
                         </span>
@@ -79,15 +99,11 @@ const Careers = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <RevealImage>
-                          <img
-                            style={{ objectFit: "cover" }}
-                            src={
-                              careers?.careersBanner?.data?.attributes
-                                ?.localFile?.childImageSharp?.fluid?.src
-                            }
-                          />
-                        </RevealImage>
+                        <GatsbyImageReveal
+                          src={
+                            careers?.careersBanner?.data?.attributes?.localFile
+                          }
+                        />
                       </div>
                     </div>
                   </div>
@@ -122,11 +138,18 @@ const Careers = ({ data }) => {
                             <h3
                               className="title--title6"
                               style={{ marginTop: "30px", color: "#000" }}
+                              data-aos="fade-up"
+                              data-aos-delay="200"
                             >
                               {item?.heading}
                             </h3>
 
-                            <h3 className="txt--p5" style={{ color: "#000" }}>
+                            <h3
+                              className="txt--p5"
+                              style={{ color: "#000" }}
+                              data-aos="fade-up"
+                              data-aos-delay="400"
+                            >
                               {item?.subHeading}
                             </h3>
                           </div>
@@ -281,16 +304,9 @@ const Careers = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <RevealImage>
-                          <img
-                            src={
-                              careers?.banner2?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            className=" lazyload"
-                            style={{ objectFit: "cover" }}
-                          />
-                        </RevealImage>
+                        <GatsbyImageReveal
+                          src={careers?.banner2?.data?.attributes?.localFile}
+                        />
                       </div>
                     </div>
                   </div>
@@ -301,8 +317,6 @@ const Careers = ({ data }) => {
           </div>
         </div>
       </div>
-
-      <div className="overlay"></div>
     </>
   )
 }
@@ -323,6 +337,11 @@ export const query = graphql`
                   attributes {
                     localFile {
                       childImageSharp {
+                        gatsbyImageData(
+                          layout: FULL_WIDTH
+                          placeholder: DOMINANT_COLOR
+                          formats: WEBP
+                        )
                         fluid {
                           ...GatsbyImageSharpFluid
                         }
@@ -336,6 +355,11 @@ export const query = graphql`
                   attributes {
                     localFile {
                       childImageSharp {
+                        gatsbyImageData(
+                          layout: FULL_WIDTH
+                          placeholder: DOMINANT_COLOR
+                          formats: WEBP
+                        )
                         fluid {
                           ...GatsbyImageSharpFluid
                         }
@@ -361,6 +385,11 @@ export const query = graphql`
                     attributes {
                       localFile {
                         childImageSharp {
+                          gatsbyImageData(
+                            layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
+                            formats: WEBP
+                          )
                           fluid {
                             ...GatsbyImageSharpFluid
                           }
@@ -384,6 +413,11 @@ export const query = graphql`
                     attributes {
                       localFile {
                         childImageSharp {
+                          gatsbyImageData(
+                            layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
+                            formats: WEBP
+                          )
                           fluid {
                             ...GatsbyImageSharpFluid
                           }

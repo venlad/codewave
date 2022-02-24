@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import CursorPointer from "../../components/cursor/CursorPointer"
 import Navbar from "../../components/Navbar"
 import FooterAboveText from "../../components/shared/FooterAboveText"
+import GatsbyImageReveal from "../../components/shared/GatsbyImageReveal"
 import RevealImage from "../../components/shared/RevealImage"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
@@ -24,9 +25,13 @@ const CustomerJourney = ({ data }) => {
   }
 
   useEffect(() => {
-    Aos.init()
+    Aos.init({
+      once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
+    })
   }, [])
-
   return (
     <>
       <CursorPointer size={mouseSize} text={mouseText} />
@@ -51,15 +56,9 @@ const CustomerJourney = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <RevealImage>
-                          <img
-                            src={
-                              customer?.banner?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                            style={{ objectFit: "cover" }}
-                          />
-                        </RevealImage>
+                        <GatsbyImageReveal
+                          src={customer?.banner?.data?.attributes?.localFile}
+                        />
                       </div>
                     </div>
                   </div>
@@ -71,14 +70,22 @@ const CustomerJourney = ({ data }) => {
                   <div className="row no-gutters">
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-6 col-md-4">
-                      <h4 className="txt--p5">
+                      <h4 className="txt--p5" data-aos="fade-up">
                         <span className="title__number">
                           {section[0]?.number}.
                         </span>
                         {section[0]?.preHeading}
                       </h4>
-                      <h3 className="title--title6">{section[0]?.heading}</h3>
+                      <h3
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                        className="title--title6"
+                      >
+                        {section[0]?.heading}
+                      </h3>
                       <div
+                        data-aos="fade-up"
+                        data-aos-delay="400"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: section[0]?.description,
@@ -89,7 +96,13 @@ const CustomerJourney = ({ data }) => {
                     <div className="col-sm-3 col-md-4">
                       <ul className="txt--p5">
                         {section[0]?.listItems?.map((item, i) => (
-                          <li key={i}>- {item?.listitems}</li>
+                          <li
+                            data-aos="fade-up"
+                            data-aos-delay={i * 200}
+                            key={i}
+                          >
+                            - {item?.listitems}
+                          </li>
                         ))}
                       </ul>
 
@@ -113,15 +126,9 @@ const CustomerJourney = ({ data }) => {
                     <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                       <div className="img-fluid">
                         <picture className="work__bg-image">
-                          <RevealImage>
-                            <img
-                              src={
-                                section[1]?.image?.data?.attributes?.localFile
-                                  ?.childImageSharp?.fluid?.src
-                              }
-                              style={{ objectFit: "cover" }}
-                            />
-                          </RevealImage>
+                          <GatsbyImageReveal
+                            src={section[1]?.image?.data?.attributes?.localFile}
+                          />
                         </picture>
                       </div>
                     </div>
@@ -129,14 +136,22 @@ const CustomerJourney = ({ data }) => {
                     <div className="col-sm-5 col-md-4">
                       <div className="about__who-content">
                         <h4 className="txt--p5">
-                          <span className="title__number">
+                          <span className="title__number" data-aos="fade-up">
                             {section[1]?.number}.
                           </span>
                           {section[1]?.preHeading}
                         </h4>
-                        <h3 className="title--title6">{section[1]?.heading}</h3>
+                        <h3
+                          className="title--title6"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
+                        >
+                          {section[1]?.heading}
+                        </h3>
                         <div className="txt--p3">
                           <div
+                            data-aos="fade-up"
+                            data-aos-delay="400"
                             dangerouslySetInnerHTML={{
                               __html: section[1]?.description,
                             }}
@@ -164,14 +179,22 @@ const CustomerJourney = ({ data }) => {
                   <div className="row  no-gutters">
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-5 col-md-4">
-                      <h4 className="txt--p5">
+                      <h4 className="txt--p5" data-aos="fade-up">
                         <span className="title__number">
                           {section[2]?.number}.
                         </span>
                         {section[2]?.preHeading}
                       </h4>
-                      <h3 className="title--title6">{section[2]?.heading}</h3>
+                      <h3
+                        className="title--title6"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        {section[2]?.heading}
+                      </h3>
                       <div
+                        data-aos="fade-up"
+                        data-aos-delay="400"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: section[2]?.description,
@@ -182,7 +205,13 @@ const CustomerJourney = ({ data }) => {
                     <div className="col-sm-4">
                       <ul className="txt--p5">
                         {section[2]?.listItems?.map((item, i) => (
-                          <li key={i}>- {item?.listitems}</li>
+                          <li
+                            data-aos="fade-up"
+                            data-aos-delay={100 * i}
+                            key={i}
+                          >
+                            - {item?.listitems}
+                          </li>
                         ))}
                       </ul>
                       <a
@@ -205,15 +234,10 @@ const CustomerJourney = ({ data }) => {
                     <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                       <div className="img-fluid" style={{ marginTop: "30px" }}>
                         <picture className="work__bg-image">
-                          <RevealImage>
-                            <img
-                              src={
-                                section[3]?.image?.data?.attributes?.localFile
-                                  ?.childImageSharp?.fluid?.src
-                              }
-                              style={{ objectFit: "cover" }}
-                            />
-                          </RevealImage>
+                          \
+                          <GatsbyImageReveal
+                            src={section[3]?.image?.data?.attributes?.localFile}
+                          />
                         </picture>
                       </div>
                     </div>
@@ -224,15 +248,23 @@ const CustomerJourney = ({ data }) => {
                     >
                       <div className="about__who-content">
                         <h4 className="txt--p5">
-                          <span className="title__number">
+                          <span className="title__number" data-aos="fade-up">
                             {" "}
                             {section[3]?.number}.
                           </span>
                           {section[3]?.preHeading}
                         </h4>
-                        <h3 className="title--title6">{section[3]?.heading}</h3>
+                        <h3
+                          className="title--title6"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
+                        >
+                          {section[3]?.heading}
+                        </h3>
                         <div className="txt--p3">
                           <div
+                            data-aos="fade-up"
+                            data-aos-delay="400"
                             dangerouslySetInnerHTML={{
                               __html: section[3]?.description,
                             }}
@@ -258,7 +290,6 @@ const CustomerJourney = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="overlay"></div>
     </>
   )
 }
@@ -285,6 +316,11 @@ export const query = graphql`
                           attributes {
                             localFile {
                               childImageSharp {
+                                gatsbyImageData(
+                                  layout: FULL_WIDTH
+                                  placeholder: DOMINANT_COLOR
+                                  formats: WEBP
+                                )
                                 fluid {
                                   ...GatsbyImageSharpFluid
                                 }
@@ -299,6 +335,11 @@ export const query = graphql`
                         attributes {
                           localFile {
                             childImageSharp {
+                              gatsbyImageData(
+                                layout: FULL_WIDTH
+                                placeholder: DOMINANT_COLOR
+                                formats: WEBP
+                              )
                               fluid {
                                 ...GatsbyImageSharpFluid
                               }
@@ -321,6 +362,11 @@ export const query = graphql`
                           attributes {
                             localFile {
                               childImageSharp {
+                                gatsbyImageData(
+                                  layout: FULL_WIDTH
+                                  placeholder: DOMINANT_COLOR
+                                  formats: WEBP
+                                )
                                 fluid {
                                   ...GatsbyImageSharpFluid
                                 }

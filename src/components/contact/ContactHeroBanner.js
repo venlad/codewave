@@ -1,5 +1,7 @@
 import React from "react"
 import useWindowSize from "../../hooks/useWindowSize"
+import GatsbyImageReveal from "../shared/GatsbyImageReveal"
+import RevealImage from "../shared/RevealImage"
 
 const ContactHeroBanner = ({ contact }) => {
   const { width } = useWindowSize()
@@ -18,33 +20,34 @@ const ContactHeroBanner = ({ contact }) => {
                   href="https://vidhya10.typeform.com/to/jhletM"
                   target="_blank"
                 >
-                  {width > 767 ? (
-                    <img
-                      src={
-                        contact?.heroBgLarge?.data?.attributes?.localFile
-                          ?.childImageSharp?.fluid?.src
-                      }
-                      className=" lazyload"
+                  {width > 767 && (
+                    <div
                       style={{
-                        transform: "translate3d(0px, 0px, 0px)",
+                        margin: "0 auto",
                         marginTop: "-35px",
                         width: "90%",
+                        minHeight: "380px",
                         maxHeight: "395px",
-                        objectFit: "contain",
                       }}
-                    />
-                  ) : (
-                    <img
-                      src={
-                        contact?.heroBgSmall?.data?.attributes?.localFile
-                          ?.childImageSharp?.fluid?.src
-                      }
-                      className=" lazyload"
+                    >
+                      <GatsbyImageReveal
+                        src={contact?.heroBgLarge?.data?.attributes?.localFile}
+                      />
+                    </div>
+                  )}
+
+                  {width <= 767 && (
+                    <div
                       style={{
-                        transform: "translate3d(0px, 0px, 0px)",
-                        marginTop: "-35px",
+                        margin: "0 auto",
+                        width: "320px",
+                        height: "520px",
                       }}
-                    />
+                    >
+                      <GatsbyImageReveal
+                        src={contact?.heroBgSmall?.data?.attributes?.localFile}
+                      />
+                    </div>
                   )}
                 </a>
 

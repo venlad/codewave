@@ -231,7 +231,7 @@ const Navbar = ({ arabic, handleMouse }) => {
         <Tween
           from={{ y: open ? "0" : "-100%" }}
           to={{ y: open ? "0" : "-100%" }}
-          duration={open ? 0.5 : 2}
+          duration={open ? 0.5 : 1.5}
         >
           <div className="nav__bg nav-bg-animation"></div>
         </Tween>

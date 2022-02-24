@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import CursorPointer from "../components/cursor/CursorPointer"
 import Navbar from "../components/Navbar"
 import FooterAboveText from "../components/shared/FooterAboveText"
+import GatsbyImageReveal from "../components/shared/GatsbyImageReveal"
 import RevealImage from "../components/shared/RevealImage"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
@@ -22,8 +23,10 @@ const About = ({ data }) => {
 
   useEffect(() => {
     Aos.init({
-      delay: 100,
       once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
     })
   }, [])
 
@@ -50,15 +53,9 @@ const About = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid" style={{ minHeight: "400px" }}>
-                        <RevealImage>
-                          <img
-                            style={{ objectFit: "contain" }}
-                            src={
-                              about?.aboutBanner?.data?.attributes?.localFile
-                                ?.childImageSharp?.fluid?.src
-                            }
-                          />
-                        </RevealImage>
+                        <GatsbyImageReveal
+                          src={about?.aboutBanner?.data?.attributes?.localFile}
+                        />
                       </div>
                     </div>
                   </div>
@@ -343,10 +340,11 @@ export const query = graphql`
                       localFile {
                         childImageSharp {
                           gatsbyImageData(
-                            placeholder: BLURRED
                             layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
                             formats: WEBP
                           )
+
                           fluid {
                             ...GatsbyImageSharpFluid
                           }
@@ -362,10 +360,11 @@ export const query = graphql`
                     localFile {
                       childImageSharp {
                         gatsbyImageData(
-                          placeholder: BLURRED
                           layout: FULL_WIDTH
+                          placeholder: DOMINANT_COLOR
                           formats: WEBP
                         )
+
                         fluid {
                           ...GatsbyImageSharpFluid
                         }
@@ -389,10 +388,11 @@ export const query = graphql`
                       localFile {
                         childImageSharp {
                           gatsbyImageData(
-                            placeholder: BLURRED
                             layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
                             formats: WEBP
                           )
+
                           fluid {
                             ...GatsbyImageSharpFluid
                           }

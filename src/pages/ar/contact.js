@@ -1,8 +1,11 @@
+import Aos from "aos"
 import { Link, graphql } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ContactHeroBanner from "../../components/contact/ContactHeroBanner"
 import CursorPointer from "../../components/cursor/CursorPointer"
 import Navbar from "../../components/Navbar"
+import GatsbyImageReveal from "../../components/shared/GatsbyImageReveal"
+import RevealImage from "../../components/shared/RevealImage"
 
 const Contact = ({ data }) => {
   const contact =
@@ -20,6 +23,15 @@ const Contact = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init({
+      once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
+    })
+  }, [])
 
   return (
     <>
@@ -50,18 +62,29 @@ const Contact = ({ data }) => {
                         style={{ marginTop: "-50px" }}
                       >
                         <h1>
-                          <div className="txt--p6">
+                          <div
+                            className="txt--p6"
+                            data-aos="fade-up"
+                            data-aos-delay={(i + 1) * 100}
+                          >
                             <span className="yellow-bg">{item?.heading}</span>
                           </div>
                         </h1>
                         <div
+                          data-aos="fade-up"
+                          data-aos-delay={(i + 1) * 150}
                           className="txt--p3"
                           dangerouslySetInnerHTML={{
                             __html: item?.contactInfo,
                           }}
                         />
-                        {item?.telephone?.map((sub, i) => (
-                          <div key={i} className="txt--p3">
+                        {item?.telephone?.map((sub, idx) => (
+                          <div
+                            key={idx}
+                            className="txt--p3"
+                            data-aos="fade-up"
+                            data-aos-delay={(i + idx) * 200}
+                          >
                             <br /> Tel.{" "}
                             <Link
                               style={{ textDecoration: "underline" }}
@@ -80,18 +103,29 @@ const Contact = ({ data }) => {
                             {lastContacts?.map((item, i) => (
                               <div className="contact__address" key={i}>
                                 <div className="txt--p6 ">
-                                  <span className="yellow-bg">
+                                  <span
+                                    className="yellow-bg"
+                                    data-aos="fade-up"
+                                    data-aos-delay={(i + 1) * 100}
+                                  >
                                     {item?.heading}
                                   </span>
                                 </div>
                                 <div
+                                  data-aos="fade-up"
+                                  data-aos-delay={(i + 1) * 150}
                                   className="txt--p3"
                                   dangerouslySetInnerHTML={{
                                     __html: item?.contactInfo,
                                   }}
                                 />
-                                {item?.telephone?.map((sub, i) => (
-                                  <div key={i} className="txt--p3">
+                                {item?.telephone?.map((sub, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="txt--p3"
+                                    data-aos="fade-up"
+                                    data-aos-delay={(i + idx) * 200}
+                                  >
                                     <br /> Tel.{" "}
                                     <Link
                                       style={{ textDecoration: "underline" }}
@@ -110,16 +144,14 @@ const Contact = ({ data }) => {
                               target="_blank"
                               href="https://www.google.com/maps/place/Codewave+-+Digital+Strategy,+User+Experience+Design,+Technology+Development/@12.9222831,77.5558296,17z/data=!4m12!1m6!3m5!1s0x3bae1410cbe3d455:0x24ccaa47ae085263!2sCodewave+-+Digital+Strategy,+User+Experience+Design,+Technology+Development!8m2!3d12.9222831!4d77.5580183!3m4!1s0x3bae1410cbe3d455:0x24ccaa47ae085263!8m2!3d12.9222831!4d77.5580183"
                             >
-                              <div className="img-fluid">
-                                <img
+                              <div
+                                className="img-fluid"
+                                style={{ width: "300px", height: "346px" }}
+                              >
+                                <GatsbyImageReveal
                                   src={
                                     contact?.map?.data?.attributes?.localFile
-                                      ?.childImageSharp?.fluid?.src
                                   }
-                                  className=" lazyload"
-                                  style={{
-                                    transform: "translate3d(0px, 0px, 0px)",
-                                  }}
                                 />
                               </div>
                             </a>
@@ -192,8 +224,6 @@ const Contact = ({ data }) => {
           </div>
         </div>
       </div>
-
-      <div className="overlay"></div>
     </>
   )
 }
@@ -228,6 +258,11 @@ export const query = graphql`
                           attributes {
                             localFile {
                               childImageSharp {
+                                gatsbyImageData(
+                                  layout: FULL_WIDTH
+                                  placeholder: DOMINANT_COLOR
+                                  formats: WEBP
+                                )
                                 fluid {
                                   ...GatsbyImageSharpFluid
                                 }
@@ -244,6 +279,11 @@ export const query = graphql`
                         attributes {
                           localFile {
                             childImageSharp {
+                              gatsbyImageData(
+                                layout: FULL_WIDTH
+                                placeholder: DOMINANT_COLOR
+                                formats: WEBP
+                              )
                               fluid {
                                 ...GatsbyImageSharpFluid
                               }
@@ -257,6 +297,11 @@ export const query = graphql`
                         attributes {
                           localFile {
                             childImageSharp {
+                              gatsbyImageData(
+                                layout: FULL_WIDTH
+                                placeholder: DOMINANT_COLOR
+                                formats: WEBP
+                              )
                               fluid {
                                 ...GatsbyImageSharpFluid
                               }
@@ -270,6 +315,11 @@ export const query = graphql`
                         attributes {
                           localFile {
                             childImageSharp {
+                              gatsbyImageData(
+                                layout: FULL_WIDTH
+                                placeholder: DOMINANT_COLOR
+                                formats: WEBP
+                              )
                               fluid {
                                 ...GatsbyImageSharpFluid
                               }
