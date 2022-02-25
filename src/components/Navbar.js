@@ -236,6 +236,9 @@ const Navbar = ({ arabic, handleMouse }) => {
           <div className="nav__bg nav-bg-animation"></div>
         </Tween>
         <Tween
+          from={{
+            opacity: 0,
+          }}
           to={{
             opacity: open ? 1 : 0,
             y: open ? "0" : "-7%",

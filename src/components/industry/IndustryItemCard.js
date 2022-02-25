@@ -7,12 +7,8 @@ const IndustryItemCard = ({ data, arabic }) => {
       <div
         className="col-sm-3 col-md-3"
         style={{ marginLeft: "10px", marginBottom: "30px" }}
-        data-cursor-type="medium"
-        data-cursor-text="watch"
       >
         <Link
-          data-cursor-type="medium"
-          data-cursor-text=""
           to={
             arabic
               ? `/ar/industries/${data?.attributes?.commonSlug}`
@@ -31,11 +27,14 @@ const IndustryItemCard = ({ data, arabic }) => {
           <h3
             className="title--title6"
             style={{ marginTop: "30px", color: "#000" }}
+            data-aos="fade-up"
           >
             {data?.attributes?.title} &#x27F6;
           </h3>
 
           <h3
+            data-aos="fade-up"
+            data-aos-delay="200"
             className="txt--p5"
             style={{ color: "#000", marginBottom: "30px" }}
           >

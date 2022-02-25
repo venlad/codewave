@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, Link } from "gatsby"
 import IndustryItemCard from "../../components/industry/IndustryItemCard"
 import TextSlider from "../../components/TextSlider"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import Navbar from "../../components/Navbar"
 import CursorPointer from "../../components/cursor/CursorPointer"
+import Aos from "aos"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Industries = ({ data }) => {
   const commonSections =
@@ -25,6 +27,15 @@ const Industries = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init({
+      once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
+    })
+  }, [])
 
   return (
     <>
@@ -101,16 +112,20 @@ const Industries = ({ data }) => {
                           <div
                             className="txt--p3"
                             style={{ marginTop: "-80px" }}
+                            data-aos="fade-up"
+                            data-aos-delya="200"
                             dangerouslySetInnerHTML={{
                               __html: landing?.industryIntro?.description,
                             }}
                           />
                         </div>
                         <div style={{ marginTop: "30px" }}>
-                          <img
-                            src={`${landing?.industryIntro?.image?.data?.attributes?.url}`}
-                            style={{ width: "90%" }}
-                            className="lazyload"
+                          <GatsbyImage
+                            image={getImage(
+                              landing?.industryIntro?.image?.data?.attributes
+                                ?.localFile
+                            )}
+                            alt=""
                           />
                         </div>
                       </div>
@@ -133,7 +148,10 @@ const Industries = ({ data }) => {
                           <div style={{ marginTop: "20px" }}>
                             {landing?.industryIntro?.examples?.map(
                               (item, i) => (
-                                <>
+                                <div
+                                  data-aos="fade-up"
+                                  data-aos-delay={i * 200}
+                                >
                                   <p
                                     dangerouslySetInnerHTML={{
                                       __html: item?.listitems,
@@ -141,7 +159,7 @@ const Industries = ({ data }) => {
                                     key={i}
                                   />
                                   <br />
-                                </>
+                                </div>
                               )
                             )}
                           </div>
@@ -169,13 +187,15 @@ const Industries = ({ data }) => {
                   >
                     <div className="col-sm-2"></div>
                     <div className="col-sm-5 col-md-8">
-                      <h3 className="title--title5">
+                      <h3 className="title--title5" data-aos="fade-up">
                         <span className="title__number"></span>
                         {landing?.industryOutro?.heading}
                       </h3>
 
                       <div className="txt--p3" style={{ marginTop: "30px" }}>
                         <div
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                           dangerouslySetInnerHTML={{
                             __html: landing?.industryOutro?.description,
                           }}
@@ -185,7 +205,9 @@ const Industries = ({ data }) => {
                           onMouseEnter={() => handleMouse(40, "")}
                           onMouseLeave={() => handleMouse(12, "")}
                         >
-                          <u>{landing?.industryOutro?.textLink}</u>
+                          <u data-aos="fade-up" data-aos-delay="400">
+                            {landing?.industryOutro?.textLink}
+                          </u>
                         </Link>
                       </div>
                     </div>
@@ -269,6 +291,11 @@ export const industryListingQuery = graphql`
                             url
                             localFile {
                               childImageSharp {
+                                gatsbyImageData(
+                                  layout: FULL_WIDTH
+                                  placeholder: DOMINANT_COLOR
+                                  formats: WEBP
+                                )
                                 fluid {
                                   ...GatsbyImageSharpFluid
                                 }

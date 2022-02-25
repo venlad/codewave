@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar"
 import CursorPointer from "../components/cursor/CursorPointer"
 import RevealImage from "../components/shared/RevealImage"
 import Aos from "aos"
+import GatsbyImageReveal from "../components/shared/GatsbyImageReveal"
 
 const Leadership = ({ data }) => {
   const leadership = data?.allStrapiLeadership?.edges[0]?.node?.data?.attributes
@@ -20,7 +21,12 @@ const Leadership = ({ data }) => {
   }
 
   useEffect(() => {
-    Aos.init()
+    Aos.init({
+      once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
+    })
   }, [])
 
   return (
@@ -47,15 +53,12 @@ const Leadership = ({ data }) => {
                   <div className="row justify-content-center no-gutters">
                     <div className="col-sm-10">
                       <div className="img-fluid">
-                        <RevealImage>
-                          <img
-                            src={
-                              leadership?.leaderBanner?.data?.attributes
-                                ?.localFile?.childImageSharp?.fluid?.src
-                            }
-                            style={{ objectFit: "cover" }}
-                          />
-                        </RevealImage>
+                        <GatsbyImageReveal
+                          src={
+                            leadership?.leaderBanner?.data?.attributes
+                              ?.localFile
+                          }
+                        />
                       </div>
                     </div>
                   </div>
@@ -69,26 +72,24 @@ const Leadership = ({ data }) => {
                     <div className="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                       <div className="img-fluid">
                         <picture className="work__bg-image">
-                          <RevealImage>
-                            <img
-                              src={
-                                leadership?.leadershipSectionOne?.image?.data
-                                  ?.attributes?.localFile?.childImageSharp
-                                  ?.fluid?.src
-                              }
-                              style={{ objectFit: "cover" }}
-                            />
-                          </RevealImage>
+                          <GatsbyImageReveal
+                            src={
+                              leadership?.leadershipSectionOne?.image?.data
+                                ?.attributes?.localFile
+                            }
+                          />
                         </picture>
                       </div>
                     </div>
                     <div className="col-sm-1"></div>
                     <div className="col-sm-5 col-md-4">
                       <div className="about__who-content">
-                        <h3 className="title--title6">
+                        <h3 className="title--title6" data-aos="fade-up">
                           {leadership?.leadershipSectionOne?.heading}
                         </h3>
                         <div
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                           className="txt--p3"
                           dangerouslySetInnerHTML={{
                             __html:
@@ -112,11 +113,13 @@ const Leadership = ({ data }) => {
                   <div className="row  no-gutters">
                     <div className="col-sm-1 col-md-2"></div>
                     <div className="col-sm-6 col-md-4">
-                      <h3 className="title--title6">
+                      <h3 className="title--title6" data-aos="fade-up">
                         {" "}
                         {leadership?.leadershipSectionTwo?.heading}
                       </h3>
                       <div
+                        data-aos="fade-up"
+                        data-aos-delay="200"
                         className="txt--p3"
                         dangerouslySetInnerHTML={{
                           __html: leadership?.leadershipSectionTwo?.description,
@@ -126,21 +129,12 @@ const Leadership = ({ data }) => {
                     <div className="col-sm-1 col-md-1"></div>
                     <div className="col-sm-4 col-md-4">
                       <div className="img-fluid">
-                        <picture
-                          className="work__bg-image margin-top-0-mob"
-                          style={{ marginTop: "-60px" }}
-                        >
-                          <RevealImage>
-                            <img
-                              src={
-                                leadership?.leadershipSectionTwo?.image?.data
-                                  ?.attributes?.localFile?.childImageSharp
-                                  ?.fluid?.src
-                              }
-                              style={{ objectFit: "cover" }}
-                            />
-                          </RevealImage>
-                        </picture>
+                        <GatsbyImageReveal
+                          src={
+                            leadership?.leadershipSectionTwo?.image?.data
+                              ?.attributes?.localFile
+                          }
+                        />
                       </div>
                     </div>
                   </div>
@@ -152,8 +146,6 @@ const Leadership = ({ data }) => {
           </div>
         </div>
       </div>
-
-      <div className="overlay"></div>
     </>
   )
 }
@@ -178,6 +170,11 @@ export const query = graphql`
                       url
                       localFile {
                         childImageSharp {
+                          gatsbyImageData(
+                            layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
+                            formats: WEBP
+                          )
                           fluid {
                             ...GatsbyImageSharpFluid
                           }
@@ -192,6 +189,11 @@ export const query = graphql`
                   attributes {
                     localFile {
                       childImageSharp {
+                        gatsbyImageData(
+                          layout: FULL_WIDTH
+                          placeholder: DOMINANT_COLOR
+                          formats: WEBP
+                        )
                         fluid {
                           ...GatsbyImageSharpFluid
                         }
@@ -209,6 +211,11 @@ export const query = graphql`
                     attributes {
                       localFile {
                         childImageSharp {
+                          gatsbyImageData(
+                            layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
+                            formats: WEBP
+                          )
                           fluid {
                             ...GatsbyImageSharpFluid
                           }
@@ -227,6 +234,11 @@ export const query = graphql`
                     attributes {
                       localFile {
                         childImageSharp {
+                          gatsbyImageData(
+                            layout: FULL_WIDTH
+                            placeholder: DOMINANT_COLOR
+                            formats: WEBP
+                          )
                           fluid {
                             ...GatsbyImageSharpFluid
                           }

@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ServiceListingCard from "../components/service/ServiceListingCard"
 import ServicesOffered from "../components/service/ServicesOffered"
 import FooterAboveText from "../components/shared/FooterAboveText"
@@ -7,6 +7,7 @@ import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 import Navbar from "../components/Navbar"
 import CursorPointer from "../components/cursor/CursorPointer"
+import Aos from "aos"
 
 const Service = ({ data }) => {
   const serviceData =
@@ -21,6 +22,15 @@ const Service = ({ data }) => {
     setMouseSize(size)
     setMouseText(text)
   }
+
+  useEffect(() => {
+    Aos.init({
+      once: true,
+      anchorPlacement: "center-center",
+      easing: "ease-in-out",
+      delay: 100,
+    })
+  }, [])
 
   return (
     <>

@@ -7,7 +7,7 @@ const GatsbyImageReveal = ({ src }) => {
   return (
     <>
       <Wrapper>
-        <Reveal>
+        <Reveal threshold={0.25}>
           <Tween
             from={{ height: "100%", width: "100%" }}
             to={{ height: "0%" }}

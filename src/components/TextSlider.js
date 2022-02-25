@@ -5,13 +5,13 @@ const TextSlider = ({ text }) => {
   return (
     <>
       <div className="about__phrase" style={{ marginTop: "40px" }}>
-        <ScrollTrigger start="-400px center" end="1200px" scrub={0.5}>
+        <ScrollTrigger start="-400px center" end="1200px" scrub={1}>
           <Tween
             from={{
-              x: "0px",
+              x: "00px",
             }}
             to={{
-              x: "-1800px",
+              x: "-2800px",
             }}
           >
             <div>{text}</div>
