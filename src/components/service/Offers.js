@@ -12,7 +12,7 @@ const Offers = ({ industry }) => {
               </span>
               {industry?.offerings?.offers.map((item, i) => (
                 <p className="mt_20" key={i}>
-                  - {item?.listitems}
+                  {item?.listitems}
                 </p>
               ))}
             </div>

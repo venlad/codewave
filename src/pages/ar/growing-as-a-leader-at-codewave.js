@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Navbar from "../../components/Navbar"
-import CursorPointer from "../../components/cursor/CursorPointer"
-import RevealImage from "../../components/shared/RevealImage"
 import Aos from "aos"
 import GatsbyImageReveal from "../../components/shared/GatsbyImageReveal"
+import LayoutWrapper from "../../components/LayoutWrapper"
 
-const GrowingLeader = ({ data }) => {
+const GrowingLeader = ({ data, location }) => {
   const growingLeader =
     data?.allStrapiGrowingLeader?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes
@@ -32,10 +30,13 @@ const GrowingLeader = ({ data }) => {
   }, [])
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -188,7 +189,7 @@ const GrowingLeader = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

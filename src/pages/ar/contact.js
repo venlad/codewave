@@ -2,12 +2,10 @@ import Aos from "aos"
 import { Link, graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import ContactHeroBanner from "../../components/contact/ContactHeroBanner"
-import CursorPointer from "../../components/cursor/CursorPointer"
-import Navbar from "../../components/Navbar"
+import LayoutWrapper from "../../components/LayoutWrapper"
 import GatsbyImageReveal from "../../components/shared/GatsbyImageReveal"
-import RevealImage from "../../components/shared/RevealImage"
 
-const Contact = ({ data }) => {
+const Contact = ({ data, location }) => {
   const contact =
     data?.allStrapiContact?.edges[0]?.node?.data?.attributes?.localizations
       ?.data[0]?.attributes
@@ -34,10 +32,13 @@ const Contact = ({ data }) => {
   }, [])
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="contact">
           <div className="content-wrapper scrollable">
             <div className="main contact">
@@ -224,7 +225,7 @@ const Contact = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

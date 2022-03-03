@@ -1,30 +1,28 @@
-import React, { useState } from "react"
+import React from "react"
 import CursorPointer from "./cursor/CursorPointer"
 import Navbar from "./Navbar"
-import YouTubeVideo from "./shared/YouTubeVideo"
+import { GatsbySeo } from "gatsby-plugin-next-seo"
 
-const LayoutWrapper = ({ children }) => {
-  const [mouseSize, setMouseSize] = useState(12)
-  const [mouseText, setMouseText] = useState("")
-
-  const [isOpen, setOpen] = useState(false)
-
-  const handleMouse = (size, text) => {
-    setMouseSize(size)
-    setMouseText(text)
-  }
+const LayoutWrapper = ({
+  children,
+  seo,
+  mouseSize,
+  mouseText,
+  handleMouse,
+  location,
+}) => {
+  const arabic = location.pathname.split("/")
 
   return (
-    <>
-      <YouTubeVideo
-        isOpen={true}
-        close={() => setOpen(false)}
-        url={about?.hero?.youtubeUrl}
+    <div style={{ cursor: "none" }}>
+      <GatsbySeo
+        title="Simple Usage Example"
+        description="A short description goes here."
       />
       <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
+      <Navbar handleMouse={handleMouse} arabic={arabic[1] === "ar"} />
       {children}
-    </>
+    </div>
   )
 }
 

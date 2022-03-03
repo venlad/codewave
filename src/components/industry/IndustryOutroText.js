@@ -35,23 +35,19 @@ const IndustryOutroText = ({ handleMouse }) => {
         >
           <div className="col-sm-2"></div>
           <div className="col-sm-5 col-md-8">
-            <h3 className="title--title5" data-aos="fade-up">
+            <h3 className="title--title5">
               <span className="title__number"></span>
               {sectionData?.heading}
             </h3>
 
             <div className="txt--p3" style={{ marginTop: "30px" }}>
               <div
-                dangerouslySetInnerHTML={{ __html: sectionData?.para1 }}
-                data-aos="fade-up"
-                data-aos-delay="200"
+                dangerouslySetInnerHTML={{ __html: sectionData?.description }}
               />
 
               <u
                 onMouseEnter={() => handleMouse(40, "")}
                 onMouseLeave={() => handleMouse(12, "")}
-                data-aos="fade-up"
-                data-aos-delay="400"
               >
                 <Link
                   className="magnetize"
@@ -61,8 +57,7 @@ const IndustryOutroText = ({ handleMouse }) => {
                   to={sectionData?.link}
                 >
                   {sectionData?.textLink}
-                </Link>{" "}
-                &#x27F6;
+                </Link>
               </u>
             </div>
           </div>

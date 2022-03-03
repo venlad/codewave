@@ -2,14 +2,12 @@ import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import TextSlider from "../components/TextSlider"
-import Navbar from "../components/Navbar"
-import CursorPointer from "../components/cursor/CursorPointer"
-import RevealImage from "../components/shared/RevealImage"
 import YouTubeVideo from "../components/shared/YouTubeVideo"
 import Aos from "aos"
 import GatsbyImageReveal from "../components/shared/GatsbyImageReveal"
+import LayoutWrapper from "../components/LayoutWrapper"
 
-const Careers = ({ data }) => {
+const Careers = ({ data, location }) => {
   const careers = data?.allStrapiCareer?.edges[0]?.node?.data?.attributes
 
   const [mouseSize, setMouseSize] = useState(12)
@@ -31,10 +29,13 @@ const Careers = ({ data }) => {
   }, [])
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -161,7 +162,11 @@ const Careers = ({ data }) => {
                 </div>
               </div>
 
-              <TextSlider text={"Authenticity - Voice - Influence - Impact"} />
+              <TextSlider
+                text={
+                  "Authenticity - Voice - Influence - Impact - Authenticity - Voice - Influence - Impact"
+                }
+              />
 
               <div className="about__awards">
                 <div className="container-fluid">
@@ -317,7 +322,7 @@ const Careers = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

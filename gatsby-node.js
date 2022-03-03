@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 landingTitle1
                 landingTitle2
                 locale
-                slug
+                commonSlug
 
                 textColor
                 title
@@ -93,7 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
                       }
                       locale
                       title
-                      slug
+                      commonSlug
 
                       offerings {
                         offeringInfo
@@ -172,7 +172,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 locale
                 title
                 thumbnailTitle
-                slug
+                commonSlug
 
                 servicelistingtitle
                 sectionBgColor
@@ -202,7 +202,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     attributes {
                       title
                       thumbnailTitle
-                      slug
+                      commonSlug
 
                       servicelistingtitle
                       sectionBgColor
@@ -273,7 +273,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data?.allStrapiIndustrie?.edges.forEach(({ node }) => {
     node.data.forEach(({ attributes }) => {
       createPage({
-        path: `ar/industries/${attributes.slug}`,
+        path: `ar/industries/${attributes.commonSlug}`,
         component: industryTemplateArabic,
         context: {
           data: attributes,
@@ -286,7 +286,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data?.allStrapiIndustrie?.edges.forEach(({ node }) => {
     node.data.forEach(({ attributes }) => {
       createPage({
-        path: `industries/${attributes.slug}`,
+        path: `industries/${attributes.commonSlug}`,
         component: industryTemplate,
         context: {
           data: attributes,
@@ -298,7 +298,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data.allStrapiService.edges.forEach(({ node }) => {
     node.data.forEach(({ attributes }) => {
       createPage({
-        path: `ar/services/${attributes.slug}`,
+        path: `ar/services/${attributes.commonSlug}`,
         component: serviceTemplateArabic,
         context: {
           data: attributes,
@@ -311,7 +311,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data.allStrapiService.edges.forEach(({ node }) => {
     node.data.forEach(({ attributes }) => {
       createPage({
-        path: `services/${attributes.slug}`,
+        path: `services/${attributes.commonSlug}`,
         component: serviceTemplate,
         context: {
           data: attributes,

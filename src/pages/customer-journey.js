@@ -1,16 +1,13 @@
 import Aos from "aos"
 import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
-import ReactMarkdown from "react-markdown"
-import CursorPointer from "../components/cursor/CursorPointer"
-import Navbar from "../components/Navbar"
+import LayoutWrapper from "../components/LayoutWrapper"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import GatsbyImageReveal from "../components/shared/GatsbyImageReveal"
-import RevealImage from "../components/shared/RevealImage"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
 
-const CustomerJourney = ({ data }) => {
+const CustomerJourney = ({ data, location }) => {
   const customer =
     data?.allStrapiCustomerjourney?.edges[0]?.node?.data?.attributes
 
@@ -33,10 +30,13 @@ const CustomerJourney = ({ data }) => {
     })
   }, [])
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -290,7 +290,7 @@ const CustomerJourney = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

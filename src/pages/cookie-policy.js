@@ -1,10 +1,9 @@
 import { graphql } from "gatsby"
 import React, { useState } from "react"
-import CursorPointer from "../components/cursor/CursorPointer"
-import Navbar from "../components/Navbar"
+import LayoutWrapper from "../components/LayoutWrapper"
 import PlainFooter from "../components/shared/PlainFooter"
 
-const CookiePolicy = ({ data }) => {
+const CookiePolicy = ({ data, location }) => {
   const policy = data?.allStrapiCookiepolicy?.edges[0]?.node?.data
 
   const [mouseSize, setMouseSize] = useState(12)
@@ -16,10 +15,13 @@ const CookiePolicy = ({ data }) => {
   }
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="legal">
           <div className="content-wrapper scrollable">
             <div className="main legal">
@@ -38,7 +40,7 @@ const CookiePolicy = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

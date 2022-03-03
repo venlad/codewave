@@ -3,15 +3,11 @@ import { graphql, Link } from "gatsby"
 import IndustryItemCard from "../../components/industry/IndustryItemCard"
 import TextSlider from "../../components/TextSlider"
 import FooterAboveText from "../../components/shared/FooterAboveText"
-import Navbar from "../../components/Navbar"
-import CursorPointer from "../../components/cursor/CursorPointer"
 import Aos from "aos"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import LayoutWrapper from "../../components/LayoutWrapper"
 
-const Industries = ({ data }) => {
-  const commonSections =
-    data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
-      ?.commonSections
+const Industries = ({ data, location }) => {
   const landing =
     data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes
@@ -38,10 +34,13 @@ const Industries = ({ data }) => {
   }, [])
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -220,7 +219,7 @@ const Industries = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 
@@ -234,7 +233,6 @@ export const industryListingQuery = graphql`
           data {
             attributes {
               title
-              slug
               commonSlug
               smallDescription
               industrylistimg {

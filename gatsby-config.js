@@ -107,5 +107,6 @@ module.exports = {
         // Add any options here
       },
     },
+    "gatsby-plugin-next-seo",
   ],
 }

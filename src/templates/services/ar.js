@@ -3,11 +3,10 @@ import React, { useState } from "react"
 import SuccessStories from "../../components/service/SuccessStories"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import { useInView } from "react-intersection-observer"
-import Navbar from "../../components/Navbar"
-import CursorPointer from "../../components/cursor/CursorPointer"
 import styled from "styled-components"
+import LayoutWrapper from "../../components/LayoutWrapper"
 
-const Service = ({ pageContext, data }) => {
+const Service = ({ pageContext, data, location }) => {
   const { ref, inView, entry } = useInView({
     threshold: 0,
     delay: 500,
@@ -32,10 +31,13 @@ const Service = ({ pageContext, data }) => {
   }
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -306,7 +308,7 @@ const Service = ({ pageContext, data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

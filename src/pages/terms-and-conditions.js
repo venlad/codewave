@@ -1,10 +1,9 @@
 import { graphql } from "gatsby"
 import React, { useState } from "react"
-import CursorPointer from "../components/cursor/CursorPointer"
-import Navbar from "../components/Navbar"
+import LayoutWrapper from "../components/LayoutWrapper"
 import PlainFooter from "../components/shared/PlainFooter"
 
-const TermsAndConditions = ({ data }) => {
+const TermsAndConditions = ({ data, location }) => {
   const terms = data?.allStrapiTermsandcondition?.edges[0]?.node?.data
   const [mouseSize, setMouseSize] = useState(12)
   const [mouseText, setMouseText] = useState("")
@@ -15,10 +14,13 @@ const TermsAndConditions = ({ data }) => {
   }
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div class="app-container" data-namespace="legal">
           <div class="content-wrapper scrollable">
             <div class="main legal">
@@ -38,7 +40,7 @@ const TermsAndConditions = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

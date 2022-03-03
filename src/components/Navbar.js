@@ -3,7 +3,7 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 
 import { Reveal, Tween } from "react-gsap"
 
-const Navbar = ({ arabic, handleMouse }) => {
+const Navbar = ({ arabic = false, handleMouse }) => {
   const data = useStaticQuery(graphql`
     {
       allStrapiNavbar {
@@ -266,7 +266,11 @@ const Navbar = ({ arabic, handleMouse }) => {
                       opacity: open ? 1 : 0,
                     }}
                   >
-                    <Link to={item?.link} className="" key={i}>
+                    <Link
+                      to={arabic ? `/ar/${item?.link}` : `/${item?.link}`}
+                      className=""
+                      key={i}
+                    >
                       <Tween
                         to={{
                           y: open ? "0" : `-${100 * i}%`,
@@ -472,7 +476,9 @@ const Navbar = ({ arabic, handleMouse }) => {
                     onMouseEnter={() => handleMouse(40, "")}
                     onMouseLeave={() => handleMouse(12, "")}
                   >
-                    <a href={item?.link}>{item?.text}</a>
+                    <Link to={arabic ? `/ar/${item?.link}` : `/${item?.link}`}>
+                      {item?.text}
+                    </Link>
                   </li>
                 ))}
 

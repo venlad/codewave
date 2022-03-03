@@ -1,19 +1,17 @@
-import { graphql } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import IndustryOutroText from "../../components/industry/IndustryOutroText"
 import Offers from "../../components/service/Offers"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import TextSlider from "../../components/TextSlider"
-import Navbar from "../../components/Navbar"
-import CursorPointer from "../../components/cursor/CursorPointer"
+import LayoutWrapper from "../../components/LayoutWrapper"
 
 const CommonBanner = styled.div`
   background-image: ${props => `url(${props.image})`};
   background-color: ${props => props.bgcolor};
 `
 
-const IndustriesPage = ({ pageContext, data }) => {
+const IndustriesPage = ({ pageContext, data, location }) => {
   const industry = pageContext?.localizedData
 
   const [mouseSize, setMouseSize] = useState(12)
@@ -25,10 +23,13 @@ const IndustriesPage = ({ pageContext, data }) => {
   }
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -145,7 +146,7 @@ const IndustriesPage = ({ pageContext, data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

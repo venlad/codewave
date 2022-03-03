@@ -1,10 +1,9 @@
 import { graphql } from "gatsby"
 import React, { useState } from "react"
-import CursorPointer from "../../components/cursor/CursorPointer"
-import Navbar from "../../components/Navbar"
+import LayoutWrapper from "../../components/LayoutWrapper"
 import PlainFooter from "../../components/shared/PlainFooter"
 
-const PrivacyPolicy = ({ data }) => {
+const PrivacyPolicy = ({ data, location }) => {
   const policy =
     data?.allStrapiPrivacypolicy?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]
@@ -17,10 +16,13 @@ const PrivacyPolicy = ({ data }) => {
   }
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div class="app-container" data-namespace="legal">
           <div class="content-wrapper scrollable">
             <div class="main legal">
@@ -40,7 +42,7 @@ const PrivacyPolicy = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 

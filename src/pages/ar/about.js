@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react"
 import FooterAboveText from "../../components/shared/FooterAboveText"
 import YoutubeHero from "../../components/shared/YoutubeHero"
 import TextSlider from "../../components/TextSlider"
-import Navbar from "../../components/Navbar"
-import CursorPointer from "../../components/cursor/CursorPointer"
 import RevealImage from "../../components/shared/RevealImage"
 import Aos from "aos"
 import GatsbyImageReveal from "../../components/shared/GatsbyImageReveal"
+import LayoutWrapper from "../../components/LayoutWrapper"
 
-const About = ({ data }) => {
+const About = ({ data, location }) => {
   const about =
     data?.allStrapiAbout?.edges[0]?.node?.data?.attributes?.localizations
       ?.data[0]?.attributes
@@ -34,10 +33,13 @@ const About = ({ data }) => {
   }, [])
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -317,9 +319,7 @@ const About = ({ data }) => {
           </div>
         </div>
       </div>
-
-      <div className="overlay"></div>
-    </>
+    </LayoutWrapper>
   )
 }
 

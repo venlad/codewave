@@ -5,11 +5,10 @@ import ServicesOffered from "../components/service/ServicesOffered"
 import FooterAboveText from "../components/shared/FooterAboveText"
 import YoutubeHero from "../components/shared/YoutubeHero"
 import TextSlider from "../components/TextSlider"
-import Navbar from "../components/Navbar"
-import CursorPointer from "../components/cursor/CursorPointer"
 import Aos from "aos"
+import LayoutWrapper from "../components/LayoutWrapper"
 
-const Service = ({ data }) => {
+const Service = ({ data, location }) => {
   const serviceData =
     data?.allStrapiServicesingle?.edges[0]?.node?.data?.attributes
 
@@ -33,10 +32,13 @@ const Service = ({ data }) => {
   }, [])
 
   return (
-    <>
-      <CursorPointer size={mouseSize} text={mouseText} />
-      <Navbar handleMouse={handleMouse} />
-      <div id="app" style={{ cursor: "none" }}>
+    <LayoutWrapper
+      mouseSize={mouseSize}
+      mouseText={mouseText}
+      handleMouse={handleMouse}
+      location={location}
+    >
+      <div id="app">
         <div className="app-container" data-namespace="about">
           <div className="content-wrapper scrollable">
             <div className="main">
@@ -106,7 +108,7 @@ const Service = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 
@@ -119,7 +121,6 @@ export const servicePageQuery = graphql`
         node {
           data {
             attributes {
-              slug
               commonSlug
               thumbnailTitle
               thumbnailPoints {
