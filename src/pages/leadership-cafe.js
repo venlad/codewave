@@ -33,6 +33,7 @@ const Leadership = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={leadership?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="about">
@@ -160,6 +161,18 @@ export const query = graphql`
         node {
           data {
             attributes {
+              seo {
+                metaDescription
+                metaTitle
+                preventIndexing
+                metaMedia {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
               hero {
                 heading
                 preHeading

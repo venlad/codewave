@@ -59,6 +59,18 @@ export const query = graphql`
               localizations {
                 data {
                   attributes {
+                    seo {
+                      metaDescription
+                      metaTitle
+                      preventIndexing
+                      metaMedia {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
                     privacyPolicy
                   }
                 }

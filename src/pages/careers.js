@@ -34,6 +34,7 @@ const Careers = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={careers?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="about">
@@ -335,6 +336,18 @@ export const query = graphql`
         node {
           data {
             attributes {
+              seo {
+                metaDescription
+                metaTitle
+                preventIndexing
+                metaMedia {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
               applyBtnLink
               applyBtnText
               banner2 {

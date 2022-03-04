@@ -21,6 +21,7 @@ const CookiePolicy = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={policy?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="legal">
@@ -57,6 +58,18 @@ export const query = graphql`
               localizations {
                 data {
                   attributes {
+                    seo {
+                      metaDescription
+                      metaTitle
+                      preventIndexing
+                      metaMedia {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
                     cookiePolicy
                   }
                 }

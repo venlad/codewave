@@ -39,6 +39,7 @@ const Industries = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={landing?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="about">
@@ -245,6 +246,18 @@ export const industryListingQuery = graphql`
               localizations {
                 data {
                   attributes {
+                    seo {
+                      metaDescription
+                      metaTitle
+                      preventIndexing
+                      metaMedia {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
                     title
                     commonSlug
                     smallDescription
@@ -273,6 +286,18 @@ export const industryListingQuery = graphql`
               localizations {
                 data {
                   attributes {
+                    seo {
+                      metaDescription
+                      metaTitle
+                      preventIndexing
+                      metaMedia {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
                     industryIntro {
                       exampleHeading
                       heading

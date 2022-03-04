@@ -21,6 +21,18 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             data {
               attributes {
+                seo {
+                  metaDescription
+                  metaTitle
+                  preventIndexing
+                  metaMedia {
+                    data {
+                      attributes {
+                        url
+                      }
+                    }
+                  }
+                }
                 bannerBgColor
                 description
                 landingTitle1
@@ -75,6 +87,18 @@ exports.createPages = async ({ graphql, actions }) => {
                 localizations {
                   data {
                     attributes {
+                      seo {
+                        metaDescription
+                        metaTitle
+                        preventIndexing
+                        metaMedia {
+                          data {
+                            attributes {
+                              url
+                            }
+                          }
+                        }
+                      }
                       industrybannerimg {
                         data {
                           attributes {
@@ -137,6 +161,18 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             data {
               attributes {
+                seo {
+                  metaDescription
+                  metaTitle
+                  preventIndexing
+                  metaMedia {
+                    data {
+                      attributes {
+                        url
+                      }
+                    }
+                  }
+                }
                 hero {
                   bgColor
                   heading
@@ -200,6 +236,18 @@ exports.createPages = async ({ graphql, actions }) => {
                 localizations {
                   data {
                     attributes {
+                      seo {
+                        metaDescription
+                        metaTitle
+                        preventIndexing
+                        metaMedia {
+                          data {
+                            attributes {
+                              url
+                            }
+                          }
+                        }
+                      }
                       title
                       thumbnailTitle
                       commonSlug

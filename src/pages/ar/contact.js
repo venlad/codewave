@@ -37,6 +37,7 @@ const Contact = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={contact?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="contact">
@@ -241,6 +242,18 @@ export const query = graphql`
               localizations {
                 data {
                   attributes {
+                    seo {
+                      metaDescription
+                      metaTitle
+                      preventIndexing
+                      metaMedia {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
                     contacts {
                       heading
                       contactInfo

@@ -35,6 +35,7 @@ const Service = ({ pageContext, data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={serviceData?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="about">

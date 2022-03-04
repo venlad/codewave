@@ -10,8 +10,8 @@ const gatsbyRequiredRules = path.join(
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Codewave-gatsby-strapi",
+    siteUrl: "https://www.codewave.com",
+    title: "Codewave",
   },
   plugins: [
     "gatsby-plugin-image",
@@ -108,5 +108,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-next-seo",
+    "gatsby-plugin-react-helmet",
   ],
 }

@@ -13,8 +13,6 @@ const Service = ({ data, location }) => {
     data?.allStrapiServicesingle?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes
 
-  console.log(serviceData?.localizations?.data[0]?.attributes, "PROPS")
-
   const services =
     data?.allStrapiService?.edges[0]?.node?.data[0]?.attributes?.localizations
       ?.data
@@ -42,6 +40,7 @@ const Service = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={serviceData?.seo}
     >
       <div id="app">
         <div className="app-container" data-namespace="about">
@@ -191,6 +190,18 @@ export const servicePageQuery = graphql`
               localizations {
                 data {
                   attributes {
+                    seo {
+                      metaDescription
+                      metaTitle
+                      preventIndexing
+                      metaMedia {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
                     locale
                     hero {
                       heading

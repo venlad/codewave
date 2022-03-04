@@ -19,6 +19,7 @@ const PrivacyPolicy = ({ data, location }) => {
       mouseText={mouseText}
       handleMouse={handleMouse}
       location={location}
+      seo={policy?.seo}
     >
       <div id="app">
         <div class="app-container" data-namespace="legal">
@@ -53,6 +54,18 @@ export const query = graphql`
         node {
           data {
             attributes {
+              seo {
+                metaDescription
+                metaTitle
+                preventIndexing
+                metaMedia {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
               privacyPolicy
               localizations {
                 data {
