@@ -123,7 +123,7 @@ const About = ({ data, location }) => {
                             <img
                               src={
                                 section[1]?.image?.data?.attributes?.localFile
-                                  ?.childImageSharp?.fluid?.src
+                                  ?.publicURL
                               }
                               style={{ objectFit: "cover" }}
                             />
@@ -223,7 +223,7 @@ const About = ({ data, location }) => {
                             <img
                               src={
                                 section[3]?.image?.data?.attributes?.localFile
-                                  ?.childImageSharp?.fluid?.src
+                                  ?.publicURL
                               }
                               style={{ objectFit: "cover" }}
                             />
@@ -303,7 +303,7 @@ const About = ({ data, location }) => {
                             <img
                               src={
                                 section[4]?.image?.data?.attributes?.localFile
-                                  ?.childImageSharp?.fluid?.src
+                                  ?.publicURL
                               }
                               style={{ objectFit: "cover" }}
                             />
@@ -357,6 +357,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH
@@ -376,6 +377,7 @@ export const query = graphql`
                       data {
                         attributes {
                           localFile {
+                            publicURL
                             childImageSharp {
                               gatsbyImageData(
                                 layout: FULL_WIDTH
@@ -403,6 +405,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH

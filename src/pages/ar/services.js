@@ -13,9 +13,7 @@ const Service = ({ data, location }) => {
     data?.allStrapiServicesingle?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes
 
-  const services =
-    data?.allStrapiService?.edges[0]?.node?.data[0]?.attributes?.localizations
-      ?.data
+  const services = data?.allStrapiService?.edges[0]?.node?.data
 
   const [mouseSize, setMouseSize] = useState(12)
   const [mouseText, setMouseText] = useState("")
@@ -66,7 +64,11 @@ const Service = ({ data, location }) => {
                     }}
                   >
                     {services?.map((item, i) => (
-                      <ServiceListingCard data={item} key={i} />
+                      <ServiceListingCard
+                        data={item?.attributes?.localizations?.data[0]}
+                        key={i}
+                        arabic={true}
+                      />
                     ))}
                   </div>
                 </div>
@@ -125,14 +127,21 @@ export const servicePageQuery = graphql`
         node {
           data {
             attributes {
-              thumbnailTitle
-              thumbnailPoints {
-                listitems
-              }
-              thumbnail {
+              localizations {
                 data {
                   attributes {
-                    url
+                    commonSlug
+                    thumbnailTitle
+                    thumbnailPoints {
+                      listitems
+                    }
+                    thumbnail {
+                      data {
+                        attributes {
+                          url
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -168,6 +177,7 @@ export const servicePageQuery = graphql`
                     attributes {
                       url
                       localFile {
+                        publicURL
                         childImageSharp {
                           gatsbyImageData(
                             layout: FULL_WIDTH
@@ -213,6 +223,7 @@ export const servicePageQuery = graphql`
                           attributes {
                             url
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH
@@ -237,6 +248,7 @@ export const servicePageQuery = graphql`
                           attributes {
                             url
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH

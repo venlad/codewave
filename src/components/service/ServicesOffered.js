@@ -46,8 +46,7 @@ const ServicesOffered = ({
                 <RevealImage>
                   <img
                     src={
-                      imgOnRight?.image?.data?.attributes?.localFile
-                        ?.childImageSharp?.fluid?.src
+                      imgOnRight?.image?.data?.attributes?.localFile?.publicURL
                     }
                     alt=""
                   />
@@ -156,8 +155,7 @@ const ServicesOffered = ({
                       className="img-fluid"
                       style={{ objectFit: "cover" }}
                       src={
-                        imgOnLeft?.image?.data?.attributes?.localFile
-                          ?.childImageSharp?.fluid?.src
+                        imgOnLeft?.image?.data?.attributes?.localFile?.publicURL
                       }
                       alt=""
                     />

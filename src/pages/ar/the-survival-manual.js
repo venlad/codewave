@@ -250,6 +250,7 @@ export const query = graphql`
                       data {
                         attributes {
                           localFile {
+                            publicURL
                             childImageSharp {
                               fluid {
                                 ...GatsbyImageSharpFluid
@@ -268,6 +269,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 fluid {
                                   ...GatsbyImageSharpFluid
@@ -292,6 +294,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 fluid {
                                   ...GatsbyImageSharpFluid

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react"
 
-import Layout from "../components/layout"
-import FirstSection from "../components/home/firstSection"
 import Hero from "../components/home/Hero"
 import CursorPointer from "../components/cursor/CursorPointer"
 import Navbar from "../components/Navbar"

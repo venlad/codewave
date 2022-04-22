@@ -5,7 +5,6 @@ import "./src/css/homePage.css"
 import "./src/css/main-pages.css"
 import "./src/css/servies-landing.css"
 import "aos/dist/aos.css"
-import "react-modal-video/scss/modal-video.scss"
 
 // import "./src/css/3a13f.css"
 // import "./src/css/21c97.css"

@@ -4,6 +4,7 @@ import { Reveal, Tween } from "react-gsap"
 import styled from "styled-components"
 
 const GatsbyImageReveal = ({ src }) => {
+  console.log(src, "JAFFA")
   return (
     <>
       <Wrapper>
@@ -16,11 +17,16 @@ const GatsbyImageReveal = ({ src }) => {
             <Mask />
           </Tween>
         </Reveal>
-        <GatsbyImage
-          image={getImage(src)}
+        {/* <GatsbyImage
+          image={getImage(src?.publicURL)}
           alt=""
           objectFit="cover"
           style={{ zIndex: 3 }}
+        /> */}
+        <img
+          src={src?.publicURL}
+          alt=""
+          style={{ zIndex: 3, objectFit: "cover" }}
         />
       </Wrapper>
     </>

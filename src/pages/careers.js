@@ -84,7 +84,7 @@ const Careers = ({ data, location }) => {
                         <img
                           src={
                             careers?.hero?.youtubeThumbnail?.data?.attributes
-                              ?.localFile?.childImageSharp?.fluid?.src
+                              ?.localFile?.publicURL
                           }
                           style={{ border: "5px solid #333" }}
                           alt="Codewave Employee Handbook - Culture Guide"
@@ -132,7 +132,7 @@ const Careers = ({ data, location }) => {
                               onClick={() => setOpen(true)}
                               src={
                                 item?.youtubeThumbnail?.data?.attributes
-                                  ?.localFile?.childImageSharp?.fluid?.src
+                                  ?.localFile?.publicURL
                               }
                               className="lazyload"
                             />
@@ -354,6 +354,7 @@ export const query = graphql`
                 data {
                   attributes {
                     localFile {
+                      publicURL
                       childImageSharp {
                         gatsbyImageData(
                           layout: FULL_WIDTH
@@ -372,6 +373,7 @@ export const query = graphql`
                 data {
                   attributes {
                     localFile {
+                      publicURL
                       childImageSharp {
                         gatsbyImageData(
                           layout: FULL_WIDTH
@@ -402,6 +404,7 @@ export const query = graphql`
                   data {
                     attributes {
                       localFile {
+                        publicURL
                         childImageSharp {
                           gatsbyImageData(
                             layout: FULL_WIDTH
@@ -430,6 +433,7 @@ export const query = graphql`
                   data {
                     attributes {
                       localFile {
+                        publicURL
                         childImageSharp {
                           gatsbyImageData(
                             layout: FULL_WIDTH

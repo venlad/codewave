@@ -12,9 +12,7 @@ const Industries = ({ data, location }) => {
     data?.allStrapiIndustrysingle?.edges[0]?.node?.data?.attributes
       ?.localizations?.data[0]?.attributes
 
-  const industries =
-    data?.allStrapiIndustrie?.edges[0]?.node?.data[0]?.attributes?.localizations
-      ?.data
+  const industries = data?.allStrapiIndustrie?.edges[0]?.node?.data
 
   const [mouseSize, setMouseSize] = useState(12)
   const [mouseText, setMouseText] = useState("")
@@ -174,8 +172,12 @@ const Industries = ({ data, location }) => {
                   className="row no-gutters justify-content-center"
                   style={{ margin: "0 auto" }}
                 >
-                  {industries.map((industry, i) => (
-                    <IndustryItemCard data={industry} key={i} />
+                  {industries?.map((industry, i) => (
+                    <IndustryItemCard
+                      data={industry?.attributes?.localizations?.data[0]}
+                      key={i}
+                      arabic={true}
+                    />
                   ))}
                 </div>
               </div>

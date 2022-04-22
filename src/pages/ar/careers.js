@@ -86,7 +86,7 @@ const Careers = ({ data, location }) => {
                         <img
                           src={
                             careers?.hero?.youtubeThumbnail?.data?.attributes
-                              ?.localFile?.childImageSharp?.fluid?.src
+                              ?.localFile?.publicURL
                           }
                           style={{ border: "5px solid #333" }}
                           alt="Codewave Employee Handbook - Culture Guide"
@@ -134,7 +134,7 @@ const Careers = ({ data, location }) => {
                               onClick={() => setOpen(true)}
                               src={
                                 item?.youtubeThumbnail?.data?.attributes
-                                  ?.localFile?.childImageSharp?.fluid?.src
+                                  ?.localFile?.publicURL
                               }
                               className="lazyload"
                             />
@@ -165,7 +165,11 @@ const Careers = ({ data, location }) => {
                 </div>
               </div>
 
-              <TextSlider text={"Authenticity - Voice - Influence - Impact"} />
+              <TextSlider
+                text={
+                  "Authenticity - Voice - Influence - Impact - Authenticity - Voice - Influence - Impact"
+                }
+              />
 
               <div className="about__awards">
                 <div className="container-fluid">
@@ -355,6 +359,7 @@ export const query = graphql`
                       data {
                         attributes {
                           localFile {
+                            publicURL
                             childImageSharp {
                               gatsbyImageData(
                                 layout: FULL_WIDTH
@@ -373,6 +378,7 @@ export const query = graphql`
                       data {
                         attributes {
                           localFile {
+                            publicURL
                             childImageSharp {
                               gatsbyImageData(
                                 layout: FULL_WIDTH
@@ -403,6 +409,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH
@@ -431,6 +438,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH

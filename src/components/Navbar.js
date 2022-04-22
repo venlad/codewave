@@ -135,12 +135,8 @@ const Navbar = ({ arabic = false, handleMouse }) => {
 
   const industries = data?.allStrapiIndustrie?.edges[0]?.node?.data
   const services = data?.allStrapiService?.edges[0]?.node?.data
-  const industriesAr =
-    data?.allStrapiIndustrie?.edges[0]?.node?.data[0]?.attributes?.localizations
-      ?.data
-  const servicesAr =
-    data?.allStrapiService?.edges[0]?.node?.data[0]?.attributes?.localizations
-      ?.data
+  const industriesAr = data?.allStrapiIndustrie?.edges[0]?.node?.data
+  const servicesAr = data?.allStrapiService?.edges[0]?.node?.data
   const navData = data?.allStrapiNavbar?.edges[0]?.node?.data?.attributes
   const navDataAr =
     data?.allStrapiNavbar?.edges[0]?.node?.data?.attributes?.localizations
@@ -157,7 +153,6 @@ const Navbar = ({ arabic = false, handleMouse }) => {
   }
 
   useEffect(() => {
-    console.log(btnRef.current, "REf")
     if (arabic) {
       setNavbar(navDataAr)
     } else {
@@ -186,7 +181,7 @@ const Navbar = ({ arabic = false, handleMouse }) => {
         onMouseEnter={() => handleMouse(40, "")}
         onMouseLeave={() => handleMouse(12, "")}
       >
-        <Link to="/" className="magnetize  is-current ">
+        <Link to={arabic ? "/ar" : "/"} className="magnetize  is-current ">
           <img
             width="140px"
             src="https://codewave.gumlet.io/image/upload/c_scale,w_140/v1566712787/codewave-logo-2x_tl2pvw.png?w=100&dpr=0.8"
@@ -200,7 +195,7 @@ const Navbar = ({ arabic = false, handleMouse }) => {
         onMouseEnter={() => handleMouse(40, "")}
         onMouseLeave={() => handleMouse(12, "")}
       >
-        <Link to="/contact" className="magnetize">
+        <Link to={arabic ? "/ar/contact" : "/contact"} className="magnetize">
           Contact
         </Link>
       </div>
@@ -386,23 +381,34 @@ const Navbar = ({ arabic = false, handleMouse }) => {
                 {navbar?.serviceListHeading}
               </h4>
               <ul>
-                {(arabic ? servicesAr : services)?.map((item, i) => (
-                  <li
-                    style={{ opacity: 1 }}
-                    onMouseEnter={() => handleMouse(40, "")}
-                    onMouseLeave={() => handleMouse(12, "")}
-                  >
-                    <Link
-                      to={
-                        arabic
-                          ? `/ar/services/${item?.attributes?.commonSlug}`
-                          : `/services/${item?.attributes?.commonSlug}`
-                      }
-                    >
-                      {item?.attributes?.menuTitle}
-                    </Link>
-                  </li>
-                ))}
+                {arabic
+                  ? servicesAr?.map((item, i) => (
+                      <li
+                        style={{ opacity: 1 }}
+                        onMouseEnter={() => handleMouse(40, "")}
+                        onMouseLeave={() => handleMouse(12, "")}
+                      >
+                        <Link
+                          to={`/ar/services/${item?.attributes?.localizations?.data[0]?.attributes?.commonSlug}`}
+                        >
+                          {
+                            item?.attributes?.localizations?.data[0]?.attributes
+                              ?.menuTitle
+                          }
+                        </Link>
+                      </li>
+                    ))
+                  : services?.map((item, i) => (
+                      <li
+                        style={{ opacity: 1 }}
+                        onMouseEnter={() => handleMouse(40, "")}
+                        onMouseLeave={() => handleMouse(12, "")}
+                      >
+                        <Link to={`/services/${item?.attributes?.commonSlug}`}>
+                          {item?.attributes?.menuTitle}
+                        </Link>
+                      </li>
+                    ))}
               </ul>
             </div>
 
@@ -423,23 +429,36 @@ const Navbar = ({ arabic = false, handleMouse }) => {
                 {navbar?.industryListHeading}
               </h4>
               <ul>
-                {(arabic ? industriesAr : industries)?.map((item, i) => (
-                  <li
-                    style={{ opacity: 1 }}
-                    onMouseEnter={() => handleMouse(40, "")}
-                    onMouseLeave={() => handleMouse(12, "")}
-                  >
-                    <Link
-                      to={
-                        arabic
-                          ? `/ar/industries/${item?.attributes?.commonSlug}`
-                          : `/industries/${item?.attributes?.commonSlug}`
-                      }
-                    >
-                      {item?.attributes?.menuTitle}
-                    </Link>
-                  </li>
-                ))}
+                {arabic
+                  ? industriesAr?.map((item, i) => (
+                      <li
+                        style={{ opacity: 1 }}
+                        onMouseEnter={() => handleMouse(40, "")}
+                        onMouseLeave={() => handleMouse(12, "")}
+                      >
+                        <Link
+                          to={`/ar/industries/${item?.attributes?.localizations?.data[0]?.attributes?.commonSlug}`}
+                        >
+                          {
+                            item?.attributes?.localizations?.data[0]?.attributes
+                              ?.menuTitle
+                          }
+                        </Link>
+                      </li>
+                    ))
+                  : industries?.map((item, i) => (
+                      <li
+                        style={{ opacity: 1 }}
+                        onMouseEnter={() => handleMouse(40, "")}
+                        onMouseLeave={() => handleMouse(12, "")}
+                      >
+                        <Link
+                          to={`/industries/${item?.attributes?.commonSlug}`}
+                        >
+                          {item?.attributes?.menuTitle}
+                        </Link>
+                      </li>
+                    ))}
 
                 <li
                   style={{ opacity: 1 }}

@@ -178,6 +178,7 @@ export const servicePageQuery = graphql`
                     attributes {
                       url
                       localFile {
+                        publicURL
                         childImageSharp {
                           fluid {
                             ...GatsbyImageSharpFluid
@@ -198,6 +199,7 @@ export const servicePageQuery = graphql`
                     attributes {
                       url
                       localFile {
+                        publicURL
                         childImageSharp {
                           fluid {
                             ...GatsbyImageSharpFluid

@@ -228,6 +228,7 @@ export const query = graphql`
                           attributes {
                             url
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH
@@ -255,6 +256,7 @@ export const query = graphql`
                         data {
                           attributes {
                             localFile {
+                              publicURL
                               childImageSharp {
                                 gatsbyImageData(
                                   layout: FULL_WIDTH
@@ -274,6 +276,7 @@ export const query = graphql`
                       data {
                         attributes {
                           localFile {
+                            publicURL
                             childImageSharp {
                               gatsbyImageData(
                                 layout: FULL_WIDTH

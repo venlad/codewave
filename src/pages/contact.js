@@ -196,8 +196,7 @@ const Contact = ({ data, location }) => {
                           style={{ paddingRight: "20px", width: "165px" }}
                           src={
                             item?.image?.data?.attributes?.localFile
-                              ?.childImageSharp?.fluid?.src ||
-                            item?.image?.data?.attributes?.url
+                              ?.publicURL || item?.image?.data?.attributes?.url
                           }
                           className="lazyload"
                         />
@@ -267,6 +266,7 @@ export const query = graphql`
                     attributes {
                       url
                       localFile {
+                        publicURL
                         childImageSharp {
                           gatsbyImageData(
                             layout: FULL_WIDTH
@@ -288,6 +288,7 @@ export const query = graphql`
                 data {
                   attributes {
                     localFile {
+                      publicURL
                       childImageSharp {
                         gatsbyImageData(
                           layout: FULL_WIDTH
@@ -306,6 +307,7 @@ export const query = graphql`
                 data {
                   attributes {
                     localFile {
+                      publicURL
                       childImageSharp {
                         gatsbyImageData(
                           layout: FULL_WIDTH
@@ -324,6 +326,7 @@ export const query = graphql`
                 data {
                   attributes {
                     localFile {
+                      publicURL
                       childImageSharp {
                         gatsbyImageData(
                           layout: FULL_WIDTH
